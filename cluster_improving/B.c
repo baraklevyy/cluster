@@ -358,7 +358,7 @@ void power_iteration_eigval_modified(const struct _spmat *A, const int *k, int M
     *eig_val -= L1norm;
     free(Bgag_mul_eig_vec);
 }
-
+/*Please check pointers of helper and k. This func swap between them*/
 void k_arrangment(int **k, int k_size, int number_of_1, double *s, int **helper){
     int *tmp;
     int i, k1_index = 0, k2_index = number_of_1;
@@ -381,7 +381,7 @@ void k_arrangment(int **k, int k_size, int number_of_1, double *s, int **helper)
 void split_mat(struct _spmat *A, int *k, double *s, int number_of_1, int *helper){
     Status status = INVALID_STATUS_CODE;
     int n = A->n;
-    int *k_ptr = &k, *helper_ptr = &helper;
+    int *k_ptr = &k, *helper_ptr = &helper;/*I have to check to where these pointers are really pointing after K_arrngment*/
     int i, j, inner_index;
     spmat* A1 = (spmat*)malloc(sizeof(spmat));
     if (NULL == A1) {
@@ -405,7 +405,7 @@ void split_mat(struct _spmat *A, int *k, double *s, int number_of_1, int *helper
     A2->n = n - number_of_1;
     /*Attributes assignment*/
     A1->mult = A->mult;
-    A2->mult = A->mult;
+    A2->mult = A->mults
     A1->add_row = A->add_row;
     A2->add_row = A->add_row;
     A1->free = A->free;
