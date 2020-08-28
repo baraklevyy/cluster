@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="cluster_improving"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="C:/Users/barak/CLionProjects/cluster_improving/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/barak/CLionProjects/cluster_improving/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/barak/CLionProjects/cluster_improving/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/barak/CLionProjects/cluster_improving/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/barak/CLionProjects/cluster_improving/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="cluster_improving">
+				<Option output="C:/Users/barak/CLionProjects/cluster_improving/cmake-build-debug/cluster_improving.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/barak/CLionProjects/cluster_improving/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/9.2.0/include"/>
+					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/9.2.0/../../../../include"/>
+					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/9.2.0/include-fixed"/>
+					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/9.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/barak/CLionProjects/cluster_improving/cmake-build-debug/Makefile&quot;  VERBOSE=1 cluster_improving"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/barak/CLionProjects/cluster_improving/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/barak/CLionProjects/cluster_improving/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/barak/CLionProjects/cluster_improving/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="cluster_improving/fast">
+				<Option output="C:/Users/barak/CLionProjects/cluster_improving/cmake-build-debug/cluster_improving.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/barak/CLionProjects/cluster_improving/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/9.2.0/include"/>
+					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/9.2.0/../../../../include"/>
+					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/9.2.0/include-fixed"/>
+					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/9.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/barak/CLionProjects/cluster_improving/cmake-build-debug/Makefile&quot;  VERBOSE=1 cluster_improving/fast"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/barak/CLionProjects/cluster_improving/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/barak/CLionProjects/cluster_improving/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/barak/CLionProjects/cluster_improving/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="C:/Users/barak/CLionProjects/cluster_improving/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/barak/CLionProjects/cluster_improving/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/barak/CLionProjects/cluster_improving/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/barak/CLionProjects/cluster_improving/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/barak/CLionProjects/cluster_improving/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="C:/Users/barak/CLionProjects/cluster_improving/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/barak/CLionProjects/cluster_improving/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/barak/CLionProjects/cluster_improving/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/barak/CLionProjects/cluster_improving/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/barak/CLionProjects/cluster_improving/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="C:/Users/barak/CLionProjects/cluster_improving/Algorithm2.c">
+			<Option target="cluster_improving"/>
+		</Unit>
+		<Unit filename="C:/Users/barak/CLionProjects/cluster_improving/Algorithm2.h">
+			<Option target="cluster_improving"/>
+		</Unit>
+		<Unit filename="C:/Users/barak/CLionProjects/cluster_improving/B.c">
+			<Option target="cluster_improving"/>
+		</Unit>
+		<Unit filename="C:/Users/barak/CLionProjects/cluster_improving/B.h">
+			<Option target="cluster_improving"/>
+		</Unit>
+		<Unit filename="C:/Users/barak/CLionProjects/cluster_improving/Common.c">
+			<Option target="cluster_improving"/>
+		</Unit>
+		<Unit filename="C:/Users/barak/CLionProjects/cluster_improving/Common.h">
+			<Option target="cluster_improving"/>
+		</Unit>
+		<Unit filename="C:/Users/barak/CLionProjects/cluster_improving/ModularityGroupsDivision.c">
+			<Option target="cluster_improving"/>
+		</Unit>
+		<Unit filename="C:/Users/barak/CLionProjects/cluster_improving/ModularityGroupsDivision.h">
+			<Option target="cluster_improving"/>
+		</Unit>
+		<Unit filename="C:/Users/barak/CLionProjects/cluster_improving/SparseMatrix.c">
+			<Option target="cluster_improving"/>
+		</Unit>
+		<Unit filename="C:/Users/barak/CLionProjects/cluster_improving/SparseMatrix.h">
+			<Option target="cluster_improving"/>
+		</Unit>
+		<Unit filename="C:/Users/barak/CLionProjects/cluster_improving/Stack.c">
+			<Option target="cluster_improving"/>
+		</Unit>
+		<Unit filename="C:/Users/barak/CLionProjects/cluster_improving/Stack.h">
+			<Option target="cluster_improving"/>
+		</Unit>
+		<Unit filename="C:/Users/barak/CLionProjects/cluster_improving/Utility.c">
+			<Option target="cluster_improving"/>
+		</Unit>
+		<Unit filename="C:/Users/barak/CLionProjects/cluster_improving/Utility.h">
+			<Option target="cluster_improving"/>
+		</Unit>
+		<Unit filename="C:/Users/barak/CLionProjects/cluster_improving/main.c">
+			<Option target="cluster_improving"/>
+		</Unit>
+		<Unit filename="C:/Users/barak/CLionProjects/cluster_improving/modularity_maximization.c">
+			<Option target="cluster_improving"/>
+		</Unit>
+		<Unit filename="C:/Users/barak/CLionProjects/cluster_improving/modularity_maximization.h">
+			<Option target="cluster_improving"/>
+		</Unit>
+		<Unit filename="C:/Users/barak/CLionProjects/cluster_improving/vector.c">
+			<Option target="cluster_improving"/>
+		</Unit>
+		<Unit filename="C:/Users/barak/CLionProjects/cluster_improving/vector.h">
+			<Option target="cluster_improving"/>
+		</Unit>
+		<Unit filename="C:/Users/barak/CLionProjects/cluster_improving/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
