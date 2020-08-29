@@ -13,11 +13,14 @@
 int main(int argc, char *argv[]) {
     fflush(stdout);
     int number_of_1 = 0;
+    int *onces_helper;
     double res1[] = {0,0,0,0};;
     double l1_norm ;
     Status status = INVALID_STATUS_CODE;
     Stack *O, *P;
     int i;
+
+
 
     double v[] = {2,-2,2,-2};
     double *res = (double*)malloc(4);
@@ -37,8 +40,15 @@ int main(int argc, char *argv[]) {
      * ##                                                                                 ##
      * #####################################################################################
      *
-    /*status = generate_graph();*/
+
     // seed random
+    status = generate_graph();
+    srand((unsigned int) time(0));
+    status = extract_matrix_size(argc, argv, &n);
+    A = spmat_allocate_list(n); /*allocation check within the function*/
+
+
+   /* status = generate_graph(); */
     srand((unsigned int) time(0));
     status = extract_matrix_size(argc, argv, &n);
     A = spmat_allocate_list(n); /*allocation check within the function*/
@@ -53,6 +63,12 @@ int main(int argc, char *argv[]) {
         get_error_message(status);
         goto l_cleanup;
     }
+    onces_helper = (int *) malloc(n * sizeof(int));
+    if (NULL == onces_helper) {
+        status = MALLOC_FAILED_CODE;
+        get_error_message(status);
+        goto l_cleanup;
+    }
 
     /*f allocation*/
     f = (double *) malloc(n * sizeof(double));
@@ -62,23 +78,42 @@ int main(int argc, char *argv[]) {
         goto l_cleanup;
     }
     status = graph_loading(argc, argv, A, k, &M);
-
+    node **outer_array_helper = (node **) calloc(n, sizeof(node *));
+    if (NULL == outer_array_helper) {
+        status = MALLOC_FAILED_CODE;
+        get_error_message(status);
+        exit(status);
+    }
     f_array(A, k, M, f);
-
     l1_norm = L1_norm(A, k, M, f);
-/*
-    b_mult(A,k,M,v,res1,f,l1_norm);
-    for(i = 0; i < n; i++ ){
-        printf("%f, ", res1[i]);
-        fflush(stdout);
-    }
-*/
-    double s[] = {0, 0, 0, 0, 0, 0};
+
+    double s[] = {0,0,0,0,0,0};
+    int *helper = (int*)malloc(sizeof(int) * n);
+
+
     algorithm2_modified(A, k, M, s, f, l1_norm, &number_of_1);
+
     for(i = 0; i < n; i++ ){
-        printf("%f, ", s[i]);
+        printf("\nk[%d] = %d\ns[%d] = %f",i,k[i],i,s[i]);
         fflush(stdout);
     }
+    k_arrangment(A, &k, number_of_1, s, &helper, &onces_helper);
+    for(i = 0; i < n; i++ ){
+        printf("\nk[%d] = %d\nhelper[%d] = %d\nonces[%d] = %d",i,k[i],i,helper[i],i, *(A->onces_num+i));
+        fflush(stdout);
+    }
+
+    rows_arrangment(A, s, number_of_1, k, helper, &outer_array_helper);
+    node **outer = A->private;
+    node* nnn;
+    int cc;
+    for(i = 0; i < n; i++ ){
+       nnn = outer[i];
+        cc = nnn->col;
+        printf("\nonces[%d] = %d\nprivate[%d] = %d",i,*(A->onces_num+i),i,cc);
+        fflush(stdout);
+    }
+
 
 
 

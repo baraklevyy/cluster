@@ -140,3 +140,54 @@ Stack* algorithm3(const struct _spmat *A, const int *k, int M, int size, double 
     exit(status);
 }
 */
+
+
+void modularity_division_rec(struct _spmat *A, int *k, int M, double *s, double *f, double L1_NORM, int number_of_1,
+                             int *rows_helper, int *onces_helper, node **outer_array_helper){
+    Status status = INVALID_STATUS_CODE;
+    status = algorithm2_modified(A, k, M, s, f, L1_NORM, number_of_1);
+
+    if(status = GROUP_NOT_DIVISIBLE_CODE){ /*stopping condition*/
+
+    }
+    spmat *A1 = (spmat*)malloc(sizeof(spmat));
+    if (NULL == A1) {
+        status = MALLOC_FAILED_CODE;
+        get_error_message(status);
+        exit(status);
+    }
+    spmat *A2 = (spmat*)malloc(sizeof(spmat));
+    if (NULL == A2) {
+        status = MALLOC_FAILED_CODE;
+        get_error_message(status);
+        exit(status);
+    }
+    else{
+        split_mat(A, A1, A2, k, s, number_of_1, rows_helper, onces_helper, outer_array_helper);
+        /*
+        modularity_division_rec(A1);
+        modularity_division_rec(A2);
+        */
+
+    }
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

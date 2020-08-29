@@ -27,7 +27,9 @@ void power_iteration_modified(const struct _spmat *A, const int *k, int M, doubl
 void power_iteration_eigval_modified(const struct _spmat *A, const int *k, int M, double *f,
                                      double L1norm, double *eig_vec, double *eig_val);
 
-void k_arrangment(int **k, int k_size, int number_of_1, double *s, int **helper);
-void split_mat(struct _spmat *A, int *k, double *s, int number_of_1, int *helper);
+void k_arrangment(struct _spmat *A, int **k, int number_of_1, double *s, int **rows_helper, int **onces_helper);
+void rows_arrangment(struct _spmat *A, double *s, int number_of_1, int *k, int *rows_helper, node ***outer_array_helper);
+void split_mat(struct _spmat *A, struct _spmat *A1, struct _spmat *A2, int *k, double *s, int number_of_1, int *rows_helper, int *onces_helper, node **outer_array_helper);
+
 
 #endif //CLUSTER_IMPROVING_B_H

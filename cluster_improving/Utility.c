@@ -15,10 +15,10 @@ Status generate_graph() {
     Status status = INVALID_STATUS_CODE;
     FILE *file;
     int sanity_check;
-    int arr[13] = {4,2,1,2,2,0,2,3,0,1,3,1,2};
+    int arr[23] = {6,3,1,3,5,2,0,5,2,3,4,3,0,2,4,3,2,3,5,3,0,1,4};
     file = fopen("C:\\Users\\barak\\CLionProjects\\cluster_improving\\graph4.in", "wb");
-    sanity_check = fwrite(arr, sizeof(int), 13, file);
-    if (13 != sanity_check) {
+    sanity_check = fwrite(arr, sizeof(int), 23, file);
+    if (23 != sanity_check) {
         status = FREAD_FAILED_CODE;
         get_error_message(status);
         goto l_cleanup;
