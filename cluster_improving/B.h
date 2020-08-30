@@ -23,7 +23,7 @@ void B_gag_vec_mult_int(const struct _spmat *A, const int *k, const int *g, int 
 void b_mult(const struct _spmat *A, const int *k, int M, double *v, double *res, const double *f, double l1_norm);
 void f_array(const struct _spmat *A, const int *k, int M, double *f);
 double L1_norm(const struct _spmat *A, const int *k, int M, double *f);
-void power_iteration_modified(const struct _spmat *A, const int *k, int M, double L1norm, double *res, double *f);
+void power_iteration_modified(const struct _spmat *A, const int *k, int M, double L1norm, double *res, double *f, double *random_vector);
 void power_iteration_eigval_modified(const struct _spmat *A, const int *k, int M, double *f,
                                      double L1norm, double *eig_vec, double *eig_val);
 

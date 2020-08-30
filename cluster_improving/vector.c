@@ -58,3 +58,9 @@ double vec_dot_int(const int *v1, const double *v2, int size) {
     return res;
 }
 
+void generate_random_normalize_vector(double *v, int size) {
+
+	for (i = 0; i < n; i++)
+		*(v + i) = (double)rand() / (double)RAND_MAX;
+	vec_normalize(v, n);
+}

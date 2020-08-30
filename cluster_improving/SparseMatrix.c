@@ -6,7 +6,7 @@
 #include "Common.h"
 
 
-/*l1_norm == 0 if Matrix_Shifting is not necessary*/
+
 void list_multiplay(const struct _spmat *A, const double *v, double *result) {
     int n, current_row, v_elem_num, i;
     double sum_so_far = 0.0;

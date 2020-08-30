@@ -28,6 +28,7 @@ int main(int argc, char *argv[]) {
 
     spmat *A;
     double *f;
+	double *random_vector;
     int M, *k;
     int n;
     /*######################################################################################
@@ -50,6 +51,7 @@ int main(int argc, char *argv[]) {
 
    /* status = generate_graph(); */
     srand((unsigned int) time(0));
+
     status = extract_matrix_size(argc, argv, &n);
     A = spmat_allocate_list(n); /*allocation check within the function*/
     if (NULL == A) {
@@ -57,6 +59,12 @@ int main(int argc, char *argv[]) {
         get_error_message(status);
         goto l_cleanup;
     }
+	random_vector = (double *)malloc(n * sizeof(double));
+	if (NULL == random_vector) {
+		status = MALLOC_FAILED_CODE;
+		get_error_message(status);
+		goto l_cleanup;
+	}
     k = (int *) malloc(n * sizeof(int));
     if (NULL == k) {
         status = MALLOC_FAILED_CODE;
@@ -91,7 +99,7 @@ int main(int argc, char *argv[]) {
     int *helper = (int*)malloc(sizeof(int) * n);
 
 
-    algorithm2_modified(A, k, M, s, f, l1_norm, &number_of_1);
+    algorithm2_modified(A, k, M, s, f, l1_norm, &number_of_1, random_vector);
 
     for(i = 0; i < n; i++ ){
         printf("\nk[%d] = %d\ns[%d] = %f",i,k[i],i,s[i]);

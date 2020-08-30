@@ -223,11 +223,25 @@ void b_mult(const struct _spmat *A, const int *k, int M, double *v, double *res,
     int n = A->n;
     int i;
     double l1_norm_handling;
+	double total;
+	double v_val;
 
     /*this calculation has to calculate just once (Linear_Algebra manipulations)*/
     for(i = 0; i < n; i++)
         tmp += (*(v + i ) * (double)(*(k + i)));
     for(i = 0; i < n; i++){
+		/*
+		total = 0.0;
+		v_val = *(v + i);
+		total = -(tmp * (*(k + i)) / ((double)M)) - (*(f + i)) * v_val + l1_norm * v_val;
+		*(res + i) += total;
+		
+		
+		
+		*/
+		
+			
+
         /*
         l1_norm_handling = tmp - (*(v + i ) * (double)(*(k + i))) + (*(v + i ) * (double)(*(k + i)) * l1_norm);
         *(res + i) -= (l1_norm_handling * ((double)*(k + i)) / (double)M);
@@ -296,47 +310,25 @@ double L1_norm(const struct _spmat *A, const int *k, int M, double *f){
     return total_max;
 }
 
-void power_iteration_modified(const struct _spmat *A, const int *k, int M, double L1norm, double *res, double *f) {
+void power_iteration_modified(const struct _spmat *A, const int *k, int M, double L1norm, double *res, double *f, double *random_vector) {
     Status status = INVALID_STATUS_CODE;
     int i;
     int n = A->n;
     //generate a random normalized vector
-    double *v = (double*)malloc(n * sizeof(double));
-    if (NULL == v) {
-        status = MALLOC_FAILED_CODE;
-        get_error_message(status);
-        exit(status);
-    }
+	random_vector = generate_random_normalize_vector(random_vector, n);
+    while (1) {/*two optimization has to deal here 
+			   1. treating infinite loop by restriction the number of iterations of the while.
+			   2.starting with diff_below_epsilon operations just after median number of iterations of mult without diff func*/
 
-    for (i = 0; i < n; i++)
-        *(v + i) = (double)rand() / (double)RAND_MAX;
-    vec_normalize(v, n);
-
-    while (1) {
-
-        b_mult(A, k, M, v, res, f,L1norm);
-        for(i=0;i<n;i++){
-            printf("%f\n", res[i]);
-            fflush(stdout);
-        }
-
+        b_mult(A, k, M, random_vector, res, f,L1norm);
         vec_normalize(res, n);
-
-        if (diff_below_epsilon(v, res, n)){
-            for(i=0;i<n;i++){
-                printf("%f\n", res[i]);
-                fflush(stdout);
-            }
-
+        if (diff_below_epsilon(random_vector, res, n))
             break;
-        }
-
-
         for (i = 0; i < n; i++)
-            *(v + i) = *(res + i);
+            *(random_vector + i) = *(res + i);
     }
-
-    free(v);
+	/*were going to reuse this vector so were not going to free it here*/
+   /* free(v); */
 }
 
 void power_iteration_eigval_modified(const struct _spmat *A, const int *k, int M, double *f,

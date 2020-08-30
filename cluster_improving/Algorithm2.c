@@ -1,32 +1,19 @@
 #include <stdlib.h>
 #include "Algorithm2.h"
+#include "B.h"
 
-Status algorithm2_modified(const struct _spmat *A, const int *k, int M, double *s, double *f, double l1_norm, int *number_of_1) {
+Status algorithm2_modified(const struct _spmat *A, const int *k, int M, double *s, double *f, double l1_norm, int *number_of_1, double *random_vector{
     Status status = INVALID_STATUS_CODE;
     int n = A->n;
-
-
-    double *normalized_eig_vec;
     double eig_val;
     int i;
-    normalized_eig_vec = (double*)malloc(n * sizeof(double));
-    if (NULL == normalized_eig_vec) {
-        status = MALLOC_FAILED_CODE;
-        get_error_message(status);
-        goto l_cleanup;
-    }
-
     // calculate eigenvector of maximal eigenvalue
    /* power_iteration(A, k, g, g_size, M, L1norm, normalized_eig_vec);*/
 
-    power_iteration_modified(A, k, M, l1_norm, normalized_eig_vec, f);
-    for(i=0;i<n;i++){
-        printf("%f/n", normalized_eig_vec[i]);
-        fflush(stdout);
-    }
+    power_iteration_modified(A, k, M, l1_norm, normalized_eig_vec, f, random_vector);
 
     // get corresponding eigenvalue
-    power_iteration_eigval_modified(A, k, M, f, l1_norm, normalized_eig_vec, &eig_val);
+    power_iteration_eigval_modified(A, k, M, f, l1_norm, normalized_eig_vec, &eig_val, random_vector);
 
     if (!IS_POSITIVE(eig_val)) {
         status = GROUP_NOT_DIVISIBLE_CODE;
