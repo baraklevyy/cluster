@@ -23,7 +23,6 @@ CMakeFiles/cluster_improving.dir/ModularityGroupsDivision.c.obj: ../Common.h
 CMakeFiles/cluster_improving.dir/ModularityGroupsDivision.c.obj: ../ModularityGroupsDivision.c
 CMakeFiles/cluster_improving.dir/ModularityGroupsDivision.c.obj: ../SparseMatrix.h
 CMakeFiles/cluster_improving.dir/ModularityGroupsDivision.c.obj: ../Stack.h
-CMakeFiles/cluster_improving.dir/ModularityGroupsDivision.c.obj: ../modularity_maximization.h
 CMakeFiles/cluster_improving.dir/ModularityGroupsDivision.c.obj: ../vector.h
 
 CMakeFiles/cluster_improving.dir/SparseMatrix.c.obj: ../Common.h

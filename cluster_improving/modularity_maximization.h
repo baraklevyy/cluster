@@ -8,10 +8,10 @@
 #include "Common.h"
 #include "Algorithm2.h"
 /* add handle of infinity loops */
-Status compute_modularity(const struct _spmat *A, const int *k, int M, const int *g, int g_size, int *s, double *res);
-Status find_vertex(const struct _spmat *A, const int *k, int M, const int *g, int g_size, int *s, double prim_mod,int *moved, int *index_to_move, double *score);
-Status find_improved_partition(const struct _spmat *A, const int *k, int M, const int *g, int g_size, int *s, int *moved, int *improve_index,double *improve, int *indicies);
-
-Status modularity_max(const struct _spmat *A, const int *k, int M, const int *g, int g_size, int *s);
+double compute_modularity(const struct _spmat *A, const int *k, int M, int *s);
+void find_vertex(const struct _spmat *A, const int *k, int M, int *s, int *moved, int *index_to_move, double *score);
+void find_improved_partition(const struct _spmat *A, const int *k, int M, int *s, int *moved, int *improve_index,double *improve, int *indicies);
+double compute_score(const struct _spmat *A, const int *k, int M, int *s, int row_number);
+void modularity_max(const struct _spmat *A, const int *k, int M, int *s, int *moved, int *indicies);
 
 #endif //CLUSTER_IMPROVING_MODULARITY_MAXIMIZATION_H

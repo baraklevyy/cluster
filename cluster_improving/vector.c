@@ -1,23 +1,24 @@
 #include <math.h>
+#include <time.h>
+#include <stdlib.h>
 #include "Common.h"
 #include "vector.h"
-#include <stdio.h>
 
-void vec_normalize(double * v, int size)
-{
+
+void vec_normalize(double * v, int size) {
     double sum = 0.0;
     double val;
     int i;
-	double *vector_pointer;
-	
+    /*double *vector_pointer;*/
 
-	/*
-	pointer increment - tend to be more efficient
-	for (vector_pointer = v; vector_pointer < v + size; vector_pointer++) {
-		val = *(vector_pointer);
-		sum += (val * val);
-	}
-	*/
+
+    /*
+    pointer increment - tend to be more efficient
+    for (vector_pointer = v; vector_pointer < v + size; vector_pointer++) {
+        val = *(vector_pointer);
+        sum += (val * val);
+    }
+    */
     for (i = 0; i < size; i++) {
         val = *(v + i);
         sum += (val * val);
@@ -26,23 +27,22 @@ void vec_normalize(double * v, int size)
     sum = sqrt(sum);
     if (!IS_POSITIVE(sum))
         return;
-	/*
-	pointer increment - tend to be more efficient
-	for (vector_pointer = v; vector_pointer < v + size; vector_pointer++) {
-		*(vector_pointer) /= sum;
-	}
+    /*
+    pointer increment - tend to be more efficient
+    for (vector_pointer = v; vector_pointer < v + size; vector_pointer++) {
+        *(vector_pointer) /= sum;
+    }
     for (i = 0; i < size; i++)
         *(v + i) /= sum;
 }
-
 */
-
+}
 int diff_below_epsilon(double *v1, double *v2, int size) {
     int i;
-
-    for (i = 0; i < size; i++)
-        if (IS_POSITIVE(fabs(*(v1 + i) - *(v2 + i))) )
+    for (i = 0; i < size; i++) {
+        if (IS_POSITIVE(fabs(*(v1 + i) - *(v2 + i))))
             return 0;
+    }
     return 1;
 }
 
@@ -67,15 +67,18 @@ double vec_dot_int(const int *v1, const double *v2, int size) {
 }
 
 void generate_random_normalize_vector(double *v, int size) {
-	double *vector_pointer;
+
+	/*double *vector_pointer;*/
 	/*
 	pointer increment - tend to be more efficient
 	for (vector_pointer = v; vector_pointer < v + size; vector_pointer++) 
 		*(vector_pointer) = (double)rand() / (double)RAND_MAX;
 	*/
+	int i;
+    /*seed random*/
+    srand((unsigned int) time(0));
 	
-	
-	for (i = 0; i < n; i++)
+	for (i = 0; i < size; i++)
 		*(v + i) = (double)rand() / (double)RAND_MAX;
-	vec_normalize(v, n);
+	vec_normalize(v, size);
 }

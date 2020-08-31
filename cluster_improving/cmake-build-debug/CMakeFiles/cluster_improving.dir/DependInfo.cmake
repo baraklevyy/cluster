@@ -4,16 +4,16 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "C:/Users/barak/CLionProjects/cluster_improving/Algorithm2.c" "C:/Users/barak/CLionProjects/cluster_improving/cmake-build-debug/CMakeFiles/cluster_improving.dir/Algorithm2.c.obj"
-  "C:/Users/barak/CLionProjects/cluster_improving/B.c" "C:/Users/barak/CLionProjects/cluster_improving/cmake-build-debug/CMakeFiles/cluster_improving.dir/B.c.obj"
-  "C:/Users/barak/CLionProjects/cluster_improving/Common.c" "C:/Users/barak/CLionProjects/cluster_improving/cmake-build-debug/CMakeFiles/cluster_improving.dir/Common.c.obj"
-  "C:/Users/barak/CLionProjects/cluster_improving/ModularityGroupsDivision.c" "C:/Users/barak/CLionProjects/cluster_improving/cmake-build-debug/CMakeFiles/cluster_improving.dir/ModularityGroupsDivision.c.obj"
-  "C:/Users/barak/CLionProjects/cluster_improving/SparseMatrix.c" "C:/Users/barak/CLionProjects/cluster_improving/cmake-build-debug/CMakeFiles/cluster_improving.dir/SparseMatrix.c.obj"
-  "C:/Users/barak/CLionProjects/cluster_improving/Stack.c" "C:/Users/barak/CLionProjects/cluster_improving/cmake-build-debug/CMakeFiles/cluster_improving.dir/Stack.c.obj"
-  "C:/Users/barak/CLionProjects/cluster_improving/Utility.c" "C:/Users/barak/CLionProjects/cluster_improving/cmake-build-debug/CMakeFiles/cluster_improving.dir/Utility.c.obj"
-  "C:/Users/barak/CLionProjects/cluster_improving/main.c" "C:/Users/barak/CLionProjects/cluster_improving/cmake-build-debug/CMakeFiles/cluster_improving.dir/main.c.obj"
-  "C:/Users/barak/CLionProjects/cluster_improving/modularity_maximization.c" "C:/Users/barak/CLionProjects/cluster_improving/cmake-build-debug/CMakeFiles/cluster_improving.dir/modularity_maximization.c.obj"
-  "C:/Users/barak/CLionProjects/cluster_improving/vector.c" "C:/Users/barak/CLionProjects/cluster_improving/cmake-build-debug/CMakeFiles/cluster_improving.dir/vector.c.obj"
+  "C:/a_work/cluster/cluster/cluster_improving/Algorithm2.c" "C:/a_work/cluster/cluster/cluster_improving/cmake-build-debug/CMakeFiles/cluster_improving.dir/Algorithm2.c.obj"
+  "C:/a_work/cluster/cluster/cluster_improving/B.c" "C:/a_work/cluster/cluster/cluster_improving/cmake-build-debug/CMakeFiles/cluster_improving.dir/B.c.obj"
+  "C:/a_work/cluster/cluster/cluster_improving/Common.c" "C:/a_work/cluster/cluster/cluster_improving/cmake-build-debug/CMakeFiles/cluster_improving.dir/Common.c.obj"
+  "C:/a_work/cluster/cluster/cluster_improving/ModularityGroupsDivision.c" "C:/a_work/cluster/cluster/cluster_improving/cmake-build-debug/CMakeFiles/cluster_improving.dir/ModularityGroupsDivision.c.obj"
+  "C:/a_work/cluster/cluster/cluster_improving/SparseMatrix.c" "C:/a_work/cluster/cluster/cluster_improving/cmake-build-debug/CMakeFiles/cluster_improving.dir/SparseMatrix.c.obj"
+  "C:/a_work/cluster/cluster/cluster_improving/Stack.c" "C:/a_work/cluster/cluster/cluster_improving/cmake-build-debug/CMakeFiles/cluster_improving.dir/Stack.c.obj"
+  "C:/a_work/cluster/cluster/cluster_improving/Utility.c" "C:/a_work/cluster/cluster/cluster_improving/cmake-build-debug/CMakeFiles/cluster_improving.dir/Utility.c.obj"
+  "C:/a_work/cluster/cluster/cluster_improving/main.c" "C:/a_work/cluster/cluster/cluster_improving/cmake-build-debug/CMakeFiles/cluster_improving.dir/main.c.obj"
+  "C:/a_work/cluster/cluster/cluster_improving/modularity_maximization.c" "C:/a_work/cluster/cluster/cluster_improving/cmake-build-debug/CMakeFiles/cluster_improving.dir/modularity_maximization.c.obj"
+  "C:/a_work/cluster/cluster/cluster_improving/vector.c" "C:/a_work/cluster/cluster/cluster_improving/cmake-build-debug/CMakeFiles/cluster_improving.dir/vector.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
