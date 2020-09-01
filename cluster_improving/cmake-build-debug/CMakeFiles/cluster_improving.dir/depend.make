@@ -22,8 +22,6 @@ CMakeFiles/cluster_improving.dir/ModularityGroupsDivision.c.obj: ../B.h
 CMakeFiles/cluster_improving.dir/ModularityGroupsDivision.c.obj: ../Common.h
 CMakeFiles/cluster_improving.dir/ModularityGroupsDivision.c.obj: ../ModularityGroupsDivision.c
 CMakeFiles/cluster_improving.dir/ModularityGroupsDivision.c.obj: ../SparseMatrix.h
-CMakeFiles/cluster_improving.dir/ModularityGroupsDivision.c.obj: ../Stack.h
-CMakeFiles/cluster_improving.dir/ModularityGroupsDivision.c.obj: ../modularity_maximization.h
 CMakeFiles/cluster_improving.dir/ModularityGroupsDivision.c.obj: ../vector.h
 
 CMakeFiles/cluster_improving.dir/SparseMatrix.c.obj: ../Common.h
@@ -47,14 +45,6 @@ CMakeFiles/cluster_improving.dir/main.c.obj: ../Stack.h
 CMakeFiles/cluster_improving.dir/main.c.obj: ../Utility.h
 CMakeFiles/cluster_improving.dir/main.c.obj: ../main.c
 CMakeFiles/cluster_improving.dir/main.c.obj: ../vector.h
-
-CMakeFiles/cluster_improving.dir/modularity_maximization.c.obj: ../Algorithm2.h
-CMakeFiles/cluster_improving.dir/modularity_maximization.c.obj: ../B.h
-CMakeFiles/cluster_improving.dir/modularity_maximization.c.obj: ../Common.h
-CMakeFiles/cluster_improving.dir/modularity_maximization.c.obj: ../SparseMatrix.h
-CMakeFiles/cluster_improving.dir/modularity_maximization.c.obj: ../modularity_maximization.c
-CMakeFiles/cluster_improving.dir/modularity_maximization.c.obj: ../modularity_maximization.h
-CMakeFiles/cluster_improving.dir/modularity_maximization.c.obj: ../vector.h
 
 CMakeFiles/cluster_improving.dir/vector.c.obj: ../Common.h
 CMakeFiles/cluster_improving.dir/vector.c.obj: ../vector.c

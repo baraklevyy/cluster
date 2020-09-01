@@ -1,35 +1,40 @@
 #include <stdlib.h>
 #include "Algorithm2.h"
 
-Status algorithm2_modified(const struct _spmat *A, const int *k, int M, double *s, double *f, double l1_norm, int *number_of_1) {
+Status algorithm2_modified(const struct _spmat *A, const int *k, int M, double *s, double *f, double l1_norm, int *number_of_1, double *normalized_eig_vec, double * random_normalized_vector) {
     Status status = INVALID_STATUS_CODE;
     int n = A->n;
 
 
-    double *normalized_eig_vec;
+    /*double *normalized_eig_vec;*/
     double eig_val;
     int i;
+    /*
     normalized_eig_vec = (double*)malloc(n * sizeof(double));
     if (NULL == normalized_eig_vec) {
         status = MALLOC_FAILED_CODE;
         get_error_message(status);
         goto l_cleanup;
     }
+     */
 
     // calculate eigenvector of maximal eigenvalue
-   /* power_iteration(A, k, g, g_size, M, L1norm, normalized_eig_vec);*/
 
-    power_iteration_modified(A, k, M, l1_norm, normalized_eig_vec, f);
+    power_iteration_modified(A, k, M, l1_norm, normalized_eig_vec, f, random_normalized_vector);
     for(i=0;i<n;i++){
-        printf("%f/n", normalized_eig_vec[i]);
+        printf("eig_vector[%d]=%f\n",i, normalized_eig_vec[i]);
         fflush(stdout);
     }
 
     // get corresponding eigenvalue
-    power_iteration_eigval_modified(A, k, M, f, l1_norm, normalized_eig_vec, &eig_val);
+    power_iteration_eigval_modified(A, k, M, f, l1_norm, normalized_eig_vec, &eig_val, random_normalized_vector);
+    printf("eigen value is %f\n", eig_val);
+    fflush(stdout);
+
+
 
     if (!IS_POSITIVE(eig_val)) {
-        status = GROUP_NOT_DIVISIBLE_CODE;
+        status = NEGATIVE_EIGEN_VALUE;
         get_error_message(status);
         goto l_cleanup;
     }
@@ -50,12 +55,10 @@ Status algorithm2_modified(const struct _spmat *A, const int *k, int M, double *
         get_error_message(status);
         goto l_cleanup;
     }
-    free(normalized_eig_vec);
     status = SUCCESS_STATUS_CODE;
     return status;
 
     l_cleanup:
-    free(normalized_eig_vec);
     for (i = 0; i < n; i++) *(s + i) = 1.0;
     return status;
 }

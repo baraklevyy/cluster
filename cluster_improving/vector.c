@@ -1,7 +1,8 @@
 #include <math.h>
+#include <time.h>
+#include <stdlib.h>
 #include "Common.h"
 #include "vector.h"
-#include <stdio.h>
 
 void vec_normalize(double * v, int size)
 {
@@ -56,5 +57,14 @@ double vec_dot_int(const int *v1, const double *v2, int size) {
         res += (double)*(v1 + i) * *(v2 + i);
 
     return res;
+}
+
+void generate_random_normalized_vector(double *v,  int size) {
+    /* seed random */
+    srand((unsigned int) time(0));
+    int i;
+    for (i = 0; i < size; i++)
+        *(v + i) = (double)rand() / (double)RAND_MAX;
+    vec_normalize(v, size);
 }
 

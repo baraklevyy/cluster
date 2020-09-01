@@ -121,12 +121,6 @@
 		<Unit filename="C:/Users/barak/CLionProjects/cluster_improving/main.c">
 			<Option target="cluster_improving"/>
 		</Unit>
-		<Unit filename="C:/Users/barak/CLionProjects/cluster_improving/modularity_maximization.c">
-			<Option target="cluster_improving"/>
-		</Unit>
-		<Unit filename="C:/Users/barak/CLionProjects/cluster_improving/modularity_maximization.h">
-			<Option target="cluster_improving"/>
-		</Unit>
 		<Unit filename="C:/Users/barak/CLionProjects/cluster_improving/vector.c">
 			<Option target="cluster_improving"/>
 		</Unit>

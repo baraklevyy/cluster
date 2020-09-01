@@ -358,33 +358,6 @@ main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\cluster_improving.dir\build.make CMakeFiles/cluster_improving.dir/main.c.s
 .PHONY : main.c.s
 
-modularity_maximization.obj: modularity_maximization.c.obj
-
-.PHONY : modularity_maximization.obj
-
-# target to build an object file
-modularity_maximization.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\cluster_improving.dir\build.make CMakeFiles/cluster_improving.dir/modularity_maximization.c.obj
-.PHONY : modularity_maximization.c.obj
-
-modularity_maximization.i: modularity_maximization.c.i
-
-.PHONY : modularity_maximization.i
-
-# target to preprocess a source file
-modularity_maximization.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\cluster_improving.dir\build.make CMakeFiles/cluster_improving.dir/modularity_maximization.c.i
-.PHONY : modularity_maximization.c.i
-
-modularity_maximization.s: modularity_maximization.c.s
-
-.PHONY : modularity_maximization.s
-
-# target to generate assembly for a file
-modularity_maximization.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\cluster_improving.dir\build.make CMakeFiles/cluster_improving.dir/modularity_maximization.c.s
-.PHONY : modularity_maximization.c.s
-
 vector.obj: vector.c.obj
 
 .PHONY : vector.obj
@@ -445,9 +418,6 @@ help:
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
-	@echo ... modularity_maximization.obj
-	@echo ... modularity_maximization.i
-	@echo ... modularity_maximization.s
 	@echo ... vector.obj
 	@echo ... vector.i
 	@echo ... vector.s

@@ -6,31 +6,35 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/barak/CLionProjects/cluster_improving/B.c
+C:/Users/barak/CLionProjects/cluster_improving/Algorithm2.h
+Common.h
+C:/Users/barak/CLionProjects/cluster_improving/Common.h
+B.h
+C:/Users/barak/CLionProjects/cluster_improving/B.h
+SparseMatrix.h
+C:/Users/barak/CLionProjects/cluster_improving/SparseMatrix.h
+vector.h
+C:/Users/barak/CLionProjects/cluster_improving/vector.h
+
+C:/Users/barak/CLionProjects/cluster_improving/B.h
+stdio.h
+-
+Common.h
+C:/Users/barak/CLionProjects/cluster_improving/Common.h
+SparseMatrix.h
+C:/Users/barak/CLionProjects/cluster_improving/SparseMatrix.h
+
+C:/Users/barak/CLionProjects/cluster_improving/Common.h
+
+C:/Users/barak/CLionProjects/cluster_improving/ModularityGroupsDivision.c
 stdio.h
 -
 stdlib.h
 -
-math.h
--
 B.h
 C:/Users/barak/CLionProjects/cluster_improving/B.h
-Common.h
-C:/Users/barak/CLionProjects/cluster_improving/Common.h
-vector.h
-C:/Users/barak/CLionProjects/cluster_improving/vector.h
-SparseMatrix.h
-C:/Users/barak/CLionProjects/cluster_improving/SparseMatrix.h
-
-C:/Users/barak/CLionProjects/cluster_improving/B.h
-stdio.h
--
-Common.h
-C:/Users/barak/CLionProjects/cluster_improving/Common.h
-SparseMatrix.h
-C:/Users/barak/CLionProjects/cluster_improving/SparseMatrix.h
-
-C:/Users/barak/CLionProjects/cluster_improving/Common.h
+Algorithm2.h
+C:/Users/barak/CLionProjects/cluster_improving/Algorithm2.h
 
 C:/Users/barak/CLionProjects/cluster_improving/SparseMatrix.h
 

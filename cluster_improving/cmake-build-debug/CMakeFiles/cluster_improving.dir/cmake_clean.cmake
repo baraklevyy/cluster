@@ -7,7 +7,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/cluster_improving.dir/Stack.c.obj"
   "CMakeFiles/cluster_improving.dir/Utility.c.obj"
   "CMakeFiles/cluster_improving.dir/main.c.obj"
-  "CMakeFiles/cluster_improving.dir/modularity_maximization.c.obj"
   "CMakeFiles/cluster_improving.dir/vector.c.obj"
   "cluster_improving.exe"
   "cluster_improving.exe.manifest"

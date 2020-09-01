@@ -12,7 +12,6 @@ set(CMAKE_DEPENDS_CHECK_C
   "C:/Users/barak/CLionProjects/cluster_improving/Stack.c" "C:/Users/barak/CLionProjects/cluster_improving/cmake-build-debug/CMakeFiles/cluster_improving.dir/Stack.c.obj"
   "C:/Users/barak/CLionProjects/cluster_improving/Utility.c" "C:/Users/barak/CLionProjects/cluster_improving/cmake-build-debug/CMakeFiles/cluster_improving.dir/Utility.c.obj"
   "C:/Users/barak/CLionProjects/cluster_improving/main.c" "C:/Users/barak/CLionProjects/cluster_improving/cmake-build-debug/CMakeFiles/cluster_improving.dir/main.c.obj"
-  "C:/Users/barak/CLionProjects/cluster_improving/modularity_maximization.c" "C:/Users/barak/CLionProjects/cluster_improving/cmake-build-debug/CMakeFiles/cluster_improving.dir/modularity_maximization.c.obj"
   "C:/Users/barak/CLionProjects/cluster_improving/vector.c" "C:/Users/barak/CLionProjects/cluster_improving/cmake-build-debug/CMakeFiles/cluster_improving.dir/vector.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "GNU")

@@ -1,3 +1,3 @@
 "C:\Program Files\JetBrains\CLion 2020.2\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\cluster_improving.dir/objects.a
 C:\MinGW\bin\ar.exe cr CMakeFiles\cluster_improving.dir/objects.a @CMakeFiles\cluster_improving.dir\objects1.rsp
-C:\MinGW\bin\gcc.exe -g   -Wl,--whole-archive CMakeFiles\cluster_improving.dir/objects.a -Wl,--no-whole-archive  -o cluster_improving.exe -Wl,--out-implib,libcluster_improving.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cluster_improving.dir\linklibs.rsp
+C:\MinGW\bin\gcc.exe  -ansi -Wall -Wextra -Werror -pedantic-errors -g   -Wl,--whole-archive CMakeFiles\cluster_improving.dir/objects.a -Wl,--no-whole-archive  -o cluster_improving.exe -Wl,--out-implib,libcluster_improving.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cluster_improving.dir\linklibs.rsp

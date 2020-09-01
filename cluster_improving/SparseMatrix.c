@@ -11,8 +11,6 @@ void list_multiplay(const struct _spmat *A, const double *v, double *result) {
     int n, current_row, v_elem_num, i;
     double sum_so_far = 0.0;
     node **outer_Array, *current_node;
-    double l1_modified;
-
     int* onces  = A->onces_num;
     outer_Array = A->private;
     n = A->n;
@@ -36,7 +34,7 @@ node* add_to_list(int col, node *elem) {
     if (NULL == new_node) {
         status = MALLOC_FAILED_CODE;
         get_error_message(status);
-        goto l_cleanup;
+        exit(status);
     }
     new_node->col = col;
     new_node->original = col;
@@ -48,12 +46,6 @@ node* add_to_list(int col, node *elem) {
 
     status = SUCCESS_STATUS_CODE;
     return new_node;
-    l_cleanup:
-    if (status != SUCCESS_STATUS_CODE) {
-        free(new_node);
-        new_node = NULL;
-        exit(status);
-    }
 }
 
 void add_row_list(struct _spmat *A, const int *row, int size, int i) {

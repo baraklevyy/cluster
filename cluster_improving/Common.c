@@ -48,6 +48,16 @@ void get_error_message(Status result) {
             message = "THE GROUP IS NOT DIVISIBLE";
             printf("%s", message);
             break;
+        case REACHED_MAX_NUMBER_OF_ITERATION:
+            message = "THE GROUP IS NOT PARTITIONALIZED";
+            printf("%s", message);
+            break;
+        case NEGATIVE_EIGEN_VALUE:
+            message = "THE GROUP IS NOT PARTITIONALIZED - negative eigen value";
+            printf("%s", message);
+            break;
+
+
         default:
             message = "UNKNOWN ERROR";
             printf("%s", message);
