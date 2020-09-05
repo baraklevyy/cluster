@@ -100,6 +100,12 @@
 		<Unit filename="C:/Users/barak/CLionProjects/cluster_improving/ModularityGroupsDivision.h">
 			<Option target="cluster_improving"/>
 		</Unit>
+		<Unit filename="C:/Users/barak/CLionProjects/cluster_improving/ModularityMaximization.c">
+			<Option target="cluster_improving"/>
+		</Unit>
+		<Unit filename="C:/Users/barak/CLionProjects/cluster_improving/ModularityMaximization.h">
+			<Option target="cluster_improving"/>
+		</Unit>
 		<Unit filename="C:/Users/barak/CLionProjects/cluster_improving/SparseMatrix.c">
 			<Option target="cluster_improving"/>
 		</Unit>

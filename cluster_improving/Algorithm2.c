@@ -4,6 +4,7 @@
 Status algorithm2_modified(const struct _spmat *A, const int *k, int M, double *s, double *f, double l1_norm, int *number_of_1, double *normalized_eig_vec, double * random_normalized_vector) {
     Status status = INVALID_STATUS_CODE;
     int n = A->n;
+    *(number_of_1) = 0;
 
 
     /*double *normalized_eig_vec;*/
@@ -55,6 +56,10 @@ Status algorithm2_modified(const struct _spmat *A, const int *k, int M, double *
         get_error_message(status);
         goto l_cleanup;
     }
+    for(i=0;i<n;i++) {
+        printf("s[%d] = %f \n", i, *(s + i));
+        fflush(stdout);
+    }
     status = SUCCESS_STATUS_CODE;
     return status;
 
@@ -63,29 +68,4 @@ Status algorithm2_modified(const struct _spmat *A, const int *k, int M, double *
     return status;
 }
 
-/*Extracting the 2 groups indices(from output of algorithm 2) */
 
-void extract_vectors(int *g, int g_size, int *s, int *v1, int *v2) {
-    int i;
-    for  (i = 0; i < g_size; i++){
-        if (*(s + i) == 1) {
-            *(v1++) = *(g + i);
-        }
-        else {
-            *(v2++) = *(g + i);
-        }
-    }
-}
-
-
-void extract_vectors_sizes(int g_size, int *s, int *g1_size, int *g2_size) {
-    int i;
-    for (i = 0; i < g_size; i++) {
-        if (*(s + i) == 1) {
-            *(g1_size) = *(g1_size)+1;
-        }
-        else {
-            *(g2_size) = *(g2_size)+1;
-        }
-    }
-}

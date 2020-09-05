@@ -5,7 +5,8 @@
 #include "Common.h"
 #include "Common.h"
 #include <stdio.h>
-
+#include <stdlib.h>
+#include "SparseMatrix.h"
 
 void get_error_message(Status result) {
 
@@ -49,11 +50,15 @@ void get_error_message(Status result) {
             printf("%s", message);
             break;
         case REACHED_MAX_NUMBER_OF_ITERATION:
-            message = "THE GROUP IS NOT PARTITIONALIZED";
+            message = "REACHED_MAX_NUMBER_OF_ITERATION";
             printf("%s", message);
             break;
         case NEGATIVE_EIGEN_VALUE:
             message = "THE GROUP IS NOT PARTITIONALIZED - negative eigen value";
+            printf("%s", message);
+            break;
+        case ZERO_NUMBER_OF_EDGES:
+            message = "ZERO_NUMBER_OF_EDGES";
             printf("%s", message);
             break;
 
@@ -65,4 +70,66 @@ void get_error_message(Status result) {
     }
 
 }
+/*
+void alloc_allocations(int n){
+    Status status = INVALID_STATUS_CODE;
+    int *k = (int *) malloc(n * sizeof(int));
+    if (NULL == k) {
+        status = MALLOC_FAILED_CODE;
+        get_error_message(status);
+        exit(status);
+    }
+    int *onces_helper = (int *) malloc(n * sizeof(int));
+    if (NULL == onces_helper) {
+        status = MALLOC_FAILED_CODE;
+        get_error_message(status);
+        exit(status);
+    }
+    double *f = (double *) malloc(n * sizeof(double));
+    if (NULL == f) {
+        status = MALLOC_FAILED_CODE;
+        get_error_message(status);
+        exit(status);
+    }
+    double *random_normalized_vector = (double *) malloc(n * sizeof(double));
+    if (NULL == random_normalized_vector) {
+        status = MALLOC_FAILED_CODE;
+        get_error_message(status);
+        exit(status);
+    }
+    double *normalized_eig_vec = malloc(n * sizeof(double));
+    if (NULL == normalized_eig_vec) {
+        status = MALLOC_FAILED_CODE;
+        get_error_message(status);
+        exit(status);
+    }
+    double *s = malloc(n * sizeof(double));
+    if (NULL == s) {
+        status = MALLOC_FAILED_CODE;
+        get_error_message(status);
+        exit(status);
+    }
+    int *rows_helper = (int*)malloc(sizeof(int) * n);
+    if (NULL == rows_helper) {
+        status = MALLOC_FAILED_CODE;
+        get_error_message(status);
+        exit(status);
+    }
+    int *relevant_indices_helper = (int*)malloc(sizeof(int) * n);
+    if (NULL == rows_helper) {
+        status = MALLOC_FAILED_CODE;
+        get_error_message(status);
+        exit(status);
+    }
+    node **outer_array_helper = (node **) calloc(n, sizeof(node *));
+    if (NULL == outer_array_helper) {
+        status = MALLOC_FAILED_CODE;
+        get_error_message(status);
+        exit(status);
+    }
+}
 
+void free_allocations(allocations *alloc){
+    free
+}
+*/

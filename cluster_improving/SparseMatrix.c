@@ -6,22 +6,28 @@
 #include "Common.h"
 
 
-
+/*l1_norm == 0 if Matrix_Shifting is not necessary*/
 void list_multiplay(const struct _spmat *A, const double *v, double *result) {
-    int n, current_row, v_elem_num, i;
+    int n, current_row /*v_elem_num, i*/ ;
     double sum_so_far = 0.0;
     node **outer_Array, *current_node;
-    int* onces  = A->onces_num;
+/*    int* onces  = A->onces_num; */
     outer_Array = A->private;
     n = A->n;
     for (current_row = 0; current_row < n; ++current_row) {
         current_node = outer_Array[current_row];
-        v_elem_num = *(onces + current_row);
+       /* v_elem_num = *(onces + current_row); */
         sum_so_far = 0.0;
+        while(current_node != NULL){
+            sum_so_far += *(v + current_node->col);
+            current_node = current_node->next;
+        }
+        /*
         for (i = 0; i < v_elem_num; i++) {
             sum_so_far += *(v + current_node->col);
             current_node = current_node->next;
         }
+         */
         *(result + current_row) += sum_so_far;
     }
 
@@ -83,6 +89,7 @@ void list_cleanup(struct _spmat *A) {
         }
     }
     free(A->onces_num);
+    free(A->relevant_indices);
     free(outer_array);
     free(A);
 }
@@ -91,7 +98,7 @@ spmat* spmat_allocate_list(int n) {
     Status status = INVALID_STATUS_CODE;
     spmat *sp = NULL;
     node **rows = NULL;
-    int *onces;
+    int i, *onces, *relevant_indices;
     /*Initializing functions pointers*/
     void (*cleaup_ptr)(struct _spmat *);
     void (*add_row_ptr)(struct _spmat *, const int *, int, int);
@@ -119,10 +126,21 @@ spmat* spmat_allocate_list(int n) {
         get_error_message(status);
         exit(status);
     }
+    relevant_indices= (int *) malloc(n * sizeof(int));
+    if (NULL == relevant_indices) {
+        status = MALLOC_FAILED_CODE;
+        get_error_message(status);
+        exit(status);
+    }
+    /* initialized relevant indices 0 - (n-1) */
+    for(i = 0; i < n; i++)
+        *(relevant_indices + i) = i;
+
     /*Initiazling variables*/
     sp->n = n;
     sp->private = rows;
     sp->onces_num = onces;
+    sp->relevant_indices = relevant_indices;
     sp->add_row = add_row_ptr;
     sp->free = cleaup_ptr;
     sp->mult = mult_list_ptr;

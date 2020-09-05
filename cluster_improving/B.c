@@ -86,26 +86,27 @@ void power_iteration_modified(const struct _spmat *A, const int *k, int M, doubl
      Status status = INVALID_STATUS_CODE;
     int i, num = 0;
     int n = A->n;
-    int max_num_of_iteration = n * n * n * n;
+    int max_num_of_iteration = (n * n * n * n) * 1000;
 
     generate_random_normalized_vector(random_normalized_vector, n);
 
     while (num <= max_num_of_iteration) {
 
         b_mult(A, k, M, random_normalized_vector, res, f,L1norm);
+        vec_normalize(res, n);
         num +=1;
-        if(num <= n ){
-            continue;
-        }
         /*
          * here we have to calculate the median number of mult operation before reaching the desirable epsilon different
         if(num <= n * n){
             continue;
         }
        */
-        vec_normalize(res, n);
-        if (diff_below_epsilon(random_normalized_vector, res, n)){
-            break;
+       /* vec_normalize(res, n); */
+        if(num >= n ){
+            if (diff_below_epsilon(random_normalized_vector, res, n)){
+                break;
+            }
+
         }
         for (i = 0; i < n; i++)
             *(random_normalized_vector + i) = *(res + i);
@@ -121,28 +122,41 @@ void power_iteration_modified(const struct _spmat *A, const int *k, int M, doubl
 
 void power_iteration_eigval_modified(const struct _spmat *A, const int *k, int M, double *f,
                                        double L1norm, double *eig_vec, double *eig_val, double *Bgag_mul_eig_vec) {
-    Status status = INVALID_STATUS_CODE;
+    /*Status status = INVALID_STATUS_CODE;*/
     int n =A->n;
-    double denom;
+   /* double denom; */
 
-    Bgag_mul_eig_vec = (double*)malloc(n * sizeof(double));
+    /*Bgag_mul_eig_vec = (double*)malloc(n * sizeof(double));*/
     b_mult(A, k, M, eig_vec, Bgag_mul_eig_vec, f, L1norm);
-    denom = vec_dot(eig_vec, eig_vec, n);
+    /*denom = vec_dot(eig_vec, eig_vec, n);
     if (!IS_POSITIVE(denom)) {
         status = ZERO_DIVISION_CODE;
         get_error_message(status);
         exit(status);
     }
-    *eig_val = vec_dot(eig_vec, Bgag_mul_eig_vec, n) / denom;
+     */
+    *eig_val = vec_dot(eig_vec, Bgag_mul_eig_vec, n);
+    /* *eig_val = vec_dot(eig_vec, Bgag_mul_eig_vec, n) / denom;*/
     *eig_val -= L1norm;
-    free(Bgag_mul_eig_vec);
+
 }
 /*Please check pointers of helper and k. This func swap between them*/
-void k_arrangment(struct _spmat *A, int **k, int number_of_1, double *s, int **rows_helper, int **onces_helper){
-    int *tmp;
-    int i, k1_index = 0, k2_index = number_of_1;
-    for(i = 0; i < A->n; i++){
+void k_arrangment(struct _spmat *A, int **k, int number_of_1, double *s, int **rows_helper, int **onces_helper, int **relevant_indices_helper){
+    int *tmp, *pointer;
+    int i, n, k1_index = 0, k2_index = number_of_1;
+    n = A->n;
+    for(i=0;i<n;i++){
+        printf("A.relevant[%d] = %d \n", i, *(A->relevant_indices + i));
+        fflush(stdout);
+    }
+    pointer = A->relevant_indices;
+    for(i = 0; i < n; i++){
         if(*(s + i) == 1.0){
+
+            *(*(relevant_indices_helper) + k1_index) = *(pointer);
+            printf("%d", *(A->relevant_indices + i));
+            fflush(stdout);
+            pointer++;
             *(*(rows_helper) + k1_index) = *(*(k) + i);
             *(*(k) + i) = k1_index;/*storing the correct col for node i*/
             /*onces attribute update*/
@@ -150,6 +164,10 @@ void k_arrangment(struct _spmat *A, int **k, int number_of_1, double *s, int **r
             k1_index++;
         }
         else{
+            *(*(relevant_indices_helper) + k2_index) = *(pointer);
+            printf("%d", *(pointer) );
+            fflush(stdout);
+            pointer++;
             *(*(rows_helper) + k2_index) = *(*(k) + i);
             *(*(k) + i) = k2_index;
             /*onces attribute update*/
@@ -165,10 +183,17 @@ void k_arrangment(struct _spmat *A, int **k, int number_of_1, double *s, int **r
     tmp = *k;
     *k = *rows_helper;
     *rows_helper = tmp;
+
     /*onces_num and onces_helper swap*/
     tmp = A->onces_num;
     A->onces_num = *onces_helper;
     *onces_helper = tmp;
+
+    /*relevant_indices swap */
+    tmp = A->relevant_indices;
+    A->relevant_indices = *relevant_indices_helper;
+    *relevant_indices_helper = tmp;
+
 }
 
 void rows_arrangment(struct _spmat *A, double *s, int number_of_1, int *rows_helper, node ***outer_array_helper) {
@@ -226,11 +251,12 @@ void rows_arrangment(struct _spmat *A, double *s, int number_of_1, int *rows_hel
 }
 
 void split_mat(struct _spmat *A, struct _spmat *A1, struct _spmat *A2, int **k, double *s,
-               int number_of_1, int **rows_helper, int *onces_helper, node ***outer_array_helper){
+               int number_of_1, int **rows_helper, int *onces_helper, node ***outer_array_helper, int *relevant_indices_helper){
     /*Status status = INVALID_STATUS_CODE;*/
     int n = A->n;
     int i;
     /*Groups sizes*/
+
     A1->n = number_of_1;
     A2->n = n - number_of_1;
     /*Attributes assignment*/
@@ -241,7 +267,7 @@ void split_mat(struct _spmat *A, struct _spmat *A1, struct _spmat *A2, int **k, 
     A1->free = A->free;
     A2->free = A->free;
     /* this function divide vector k into 2 groups, same for onces_num vector */
-    k_arrangment(A, k, number_of_1, s, rows_helper, &onces_helper);
+    k_arrangment(A, k, number_of_1, s, rows_helper, &onces_helper, &relevant_indices_helper);
 
 
     /*deleting unnecessary elements within the rows, as well as arranging the outer_array of list pointers obeying the vector s classification */
@@ -250,11 +276,23 @@ void split_mat(struct _spmat *A, struct _spmat *A1, struct _spmat *A2, int **k, 
         printf("rows_helper[%d] = %d \n", i, *(*(rows_helper) + i));
         fflush(stdout);
     }
+
+    A1->relevant_indices = A->relevant_indices;
+    A2->relevant_indices = A->relevant_indices + number_of_1;
     A1->onces_num = A->onces_num;
     A2->onces_num =  A->onces_num + number_of_1;
     /*Private attribute assignment*/
     A1->private = A->private;
     A2->private = (node **)(A->private) + number_of_1;
+    for(i=0;i<A1->n;i++){
+        printf("A1.relevant[%d] = %d \n", i, *(A1->relevant_indices + i));
+        fflush(stdout);
+    }
+    for(i=0;i<A2->n;i++){
+        printf("A1.relevant[%d] = %d \n", i, *(A2->relevant_indices + i));
+        fflush(stdout);
+    }
+
 
 }
 

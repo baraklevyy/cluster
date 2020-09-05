@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "C:/Users/barak/CLionProjects/cluster_improving/B.c" "C:/Users/barak/CLionProjects/cluster_improving/cmake-build-debug/CMakeFiles/cluster_improving.dir/B.c.obj"
   "C:/Users/barak/CLionProjects/cluster_improving/Common.c" "C:/Users/barak/CLionProjects/cluster_improving/cmake-build-debug/CMakeFiles/cluster_improving.dir/Common.c.obj"
   "C:/Users/barak/CLionProjects/cluster_improving/ModularityGroupsDivision.c" "C:/Users/barak/CLionProjects/cluster_improving/cmake-build-debug/CMakeFiles/cluster_improving.dir/ModularityGroupsDivision.c.obj"
+  "C:/Users/barak/CLionProjects/cluster_improving/ModularityMaximization.c" "C:/Users/barak/CLionProjects/cluster_improving/cmake-build-debug/CMakeFiles/cluster_improving.dir/ModularityMaximization.c.obj"
   "C:/Users/barak/CLionProjects/cluster_improving/SparseMatrix.c" "C:/Users/barak/CLionProjects/cluster_improving/cmake-build-debug/CMakeFiles/cluster_improving.dir/SparseMatrix.c.obj"
   "C:/Users/barak/CLionProjects/cluster_improving/Stack.c" "C:/Users/barak/CLionProjects/cluster_improving/cmake-build-debug/CMakeFiles/cluster_improving.dir/Stack.c.obj"
   "C:/Users/barak/CLionProjects/cluster_improving/Utility.c" "C:/Users/barak/CLionProjects/cluster_improving/cmake-build-debug/CMakeFiles/cluster_improving.dir/Utility.c.obj"

@@ -16,19 +16,30 @@ CMakeFiles/cluster_improving.dir/B.c.obj: ../vector.h
 
 CMakeFiles/cluster_improving.dir/Common.c.obj: ../Common.c
 CMakeFiles/cluster_improving.dir/Common.c.obj: ../Common.h
+CMakeFiles/cluster_improving.dir/Common.c.obj: ../SparseMatrix.h
 
 CMakeFiles/cluster_improving.dir/ModularityGroupsDivision.c.obj: ../Algorithm2.h
 CMakeFiles/cluster_improving.dir/ModularityGroupsDivision.c.obj: ../B.h
 CMakeFiles/cluster_improving.dir/ModularityGroupsDivision.c.obj: ../Common.h
 CMakeFiles/cluster_improving.dir/ModularityGroupsDivision.c.obj: ../ModularityGroupsDivision.c
+CMakeFiles/cluster_improving.dir/ModularityGroupsDivision.c.obj: ../ModularityMaximization.h
 CMakeFiles/cluster_improving.dir/ModularityGroupsDivision.c.obj: ../SparseMatrix.h
 CMakeFiles/cluster_improving.dir/ModularityGroupsDivision.c.obj: ../vector.h
+
+CMakeFiles/cluster_improving.dir/ModularityMaximization.c.obj: ../Algorithm2.h
+CMakeFiles/cluster_improving.dir/ModularityMaximization.c.obj: ../B.h
+CMakeFiles/cluster_improving.dir/ModularityMaximization.c.obj: ../Common.h
+CMakeFiles/cluster_improving.dir/ModularityMaximization.c.obj: ../ModularityMaximization.c
+CMakeFiles/cluster_improving.dir/ModularityMaximization.c.obj: ../ModularityMaximization.h
+CMakeFiles/cluster_improving.dir/ModularityMaximization.c.obj: ../SparseMatrix.h
+CMakeFiles/cluster_improving.dir/ModularityMaximization.c.obj: ../vector.h
 
 CMakeFiles/cluster_improving.dir/SparseMatrix.c.obj: ../Common.h
 CMakeFiles/cluster_improving.dir/SparseMatrix.c.obj: ../SparseMatrix.c
 CMakeFiles/cluster_improving.dir/SparseMatrix.c.obj: ../SparseMatrix.h
 
 CMakeFiles/cluster_improving.dir/Stack.c.obj: ../Common.h
+CMakeFiles/cluster_improving.dir/Stack.c.obj: ../SparseMatrix.h
 CMakeFiles/cluster_improving.dir/Stack.c.obj: ../Stack.c
 CMakeFiles/cluster_improving.dir/Stack.c.obj: ../Stack.h
 
@@ -47,6 +58,7 @@ CMakeFiles/cluster_improving.dir/main.c.obj: ../main.c
 CMakeFiles/cluster_improving.dir/main.c.obj: ../vector.h
 
 CMakeFiles/cluster_improving.dir/vector.c.obj: ../Common.h
+CMakeFiles/cluster_improving.dir/vector.c.obj: ../SparseMatrix.h
 CMakeFiles/cluster_improving.dir/vector.c.obj: ../vector.c
 CMakeFiles/cluster_improving.dir/vector.c.obj: ../vector.h
 

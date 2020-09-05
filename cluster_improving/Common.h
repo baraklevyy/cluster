@@ -8,6 +8,7 @@
 #define IS_POSITIVE(X) ((X) > 0.00001)
 #define MAX(x, y) (((x) > (y)) ? (x) : (y))
 #define MIN(x, y) (((x) < (y)) ? (x) : (y))
+#include "SparseMatrix.h"
 
 /*Creating Linked-list. Each cell contain the column index, data and next reference*/
 
@@ -25,10 +26,27 @@ typedef enum _Status {
     GROUP_NOT_DIVISIBLE_CODE,
     REACHED_MAX_NUMBER_OF_ITERATION,
     NEGATIVE_EIGEN_VALUE,
+    ZERO_NUMBER_OF_EDGES,
     //COUNTER FOR ERRORS
     STATUS_CODE_COUNT
-}Status, *PStatus;
-
+}Status;
 void get_error_message(Status result);
+/*
+typedef struct _allocations {
+    int *k;
+    double *s;
+    double *f;
+    double *random_normalized_vector;
+    double *normalized_eig_vec;
+    int *onces_helper;
+    int *rows_helper;
+    int *relevant_indices_helper;
+    node **outer_array_helper;
+}allocations;
 
+
+void alloc_allocations(int n);
+void free_allocations();
+
+*/
 #endif //CLUSTER_IMPROVING_COMMON_H

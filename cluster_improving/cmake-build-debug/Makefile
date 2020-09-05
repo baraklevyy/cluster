@@ -250,6 +250,33 @@ ModularityGroupsDivision.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\cluster_improving.dir\build.make CMakeFiles/cluster_improving.dir/ModularityGroupsDivision.c.s
 .PHONY : ModularityGroupsDivision.c.s
 
+ModularityMaximization.obj: ModularityMaximization.c.obj
+
+.PHONY : ModularityMaximization.obj
+
+# target to build an object file
+ModularityMaximization.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\cluster_improving.dir\build.make CMakeFiles/cluster_improving.dir/ModularityMaximization.c.obj
+.PHONY : ModularityMaximization.c.obj
+
+ModularityMaximization.i: ModularityMaximization.c.i
+
+.PHONY : ModularityMaximization.i
+
+# target to preprocess a source file
+ModularityMaximization.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\cluster_improving.dir\build.make CMakeFiles/cluster_improving.dir/ModularityMaximization.c.i
+.PHONY : ModularityMaximization.c.i
+
+ModularityMaximization.s: ModularityMaximization.c.s
+
+.PHONY : ModularityMaximization.s
+
+# target to generate assembly for a file
+ModularityMaximization.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\cluster_improving.dir\build.make CMakeFiles/cluster_improving.dir/ModularityMaximization.c.s
+.PHONY : ModularityMaximization.c.s
+
 SparseMatrix.obj: SparseMatrix.c.obj
 
 .PHONY : SparseMatrix.obj
@@ -406,6 +433,9 @@ help:
 	@echo ... ModularityGroupsDivision.obj
 	@echo ... ModularityGroupsDivision.i
 	@echo ... ModularityGroupsDivision.s
+	@echo ... ModularityMaximization.obj
+	@echo ... ModularityMaximization.i
+	@echo ... ModularityMaximization.s
 	@echo ... SparseMatrix.obj
 	@echo ... SparseMatrix.i
 	@echo ... SparseMatrix.s
