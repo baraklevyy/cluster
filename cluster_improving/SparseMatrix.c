@@ -5,29 +5,19 @@
 #include <stdlib.h>
 #include "Common.h"
 
-
-/*l1_norm == 0 if Matrix_Shifting is not necessary*/
 void list_multiplay(const struct _spmat *A, const double *v, double *result) {
-    int n, current_row /*v_elem_num, i*/ ;
-    double sum_so_far = 0.0;
+    int n, current_row;
+    double sum_so_far;
     node **outer_Array, *current_node;
-/*    int* onces  = A->onces_num; */
     outer_Array = A->private;
     n = A->n;
     for (current_row = 0; current_row < n; ++current_row) {
         current_node = outer_Array[current_row];
-       /* v_elem_num = *(onces + current_row); */
         sum_so_far = 0.0;
         while(current_node != NULL){
             sum_so_far += *(v + current_node->col);
             current_node = current_node->next;
         }
-        /*
-        for (i = 0; i < v_elem_num; i++) {
-            sum_so_far += *(v + current_node->col);
-            current_node = current_node->next;
-        }
-         */
         *(result + current_row) += sum_so_far;
     }
 
@@ -74,24 +64,30 @@ void add_row_list(struct _spmat *A, const int *row, int size, int i) {
     }
 }
 
+
+
 void list_cleanup(struct _spmat *A) {
     node** outer_array;
-    node* head, *current_node;
-    int dimantion, i;
+    node* next_node, *current_node;
+    int n, i;
     outer_array = A->private;
-    dimantion = A->n;
+    n = A->n;
     i = 0;
-    for (i = 0; i < dimantion; ++i) {
-        head = outer_array[i];
-        while ((current_node = head) != NULL) {/*set currentNode to head, stop when empty*/
-            head = head->next;
+    for (i = 0; i < n; ++i) {
+        next_node = *(outer_array +i);
+        current_node = next_node;
+        while (current_node != NULL) {/*set currentNode to head, stop when empty*/
+            next_node = next_node->next;
             free(current_node);
+            current_node = next_node;
         }
     }
+    /*
     free(A->onces_num);
     free(A->relevant_indices);
+     */
     free(outer_array);
-    free(A);
+    /*free(A);*/
 }
 
 spmat* spmat_allocate_list(int n) {

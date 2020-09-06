@@ -11,11 +11,6 @@ void modularity_max(const struct _spmat *A, const int *k, int M, double *s, int 
     n = A_size;
     do{
         *(number_of_1) = 0;
-
-
-
-
-
         /* set to zero relevant elements of moved */
         for(i = 0; i < n; i++){
             moved[i]=0;

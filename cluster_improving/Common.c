@@ -70,66 +70,123 @@ void get_error_message(Status result) {
     }
 
 }
-/*
-void alloc_allocations(int n){
+allocations* alloc_allocations(int n) {
     Status status = INVALID_STATUS_CODE;
-    int *k = (int *) malloc(n * sizeof(int));
+    int *k, *onces_helper, *output_array, *rows_helper, *relevant_indices_helper;
+    double *f, *random_normalized_vector, *s;
+    node **outer_array_helper;
+    allocations *alloc = (allocations *) malloc(sizeof(allocations));
+    k = (int *) malloc(n * sizeof(int));
     if (NULL == k) {
         status = MALLOC_FAILED_CODE;
         get_error_message(status);
         exit(status);
     }
-    int *onces_helper = (int *) malloc(n * sizeof(int));
+    onces_helper = (int *) malloc(n * sizeof(int));
     if (NULL == onces_helper) {
         status = MALLOC_FAILED_CODE;
         get_error_message(status);
         exit(status);
     }
-    double *f = (double *) malloc(n * sizeof(double));
+    output_array = (int *) malloc(((2*n)+1) * sizeof(int));
+    if (NULL == output_array) {
+        status = MALLOC_FAILED_CODE;
+        get_error_message(status);
+        exit(status);
+    }
+    f = (double *) malloc(n * sizeof(double));
     if (NULL == f) {
         status = MALLOC_FAILED_CODE;
         get_error_message(status);
         exit(status);
     }
-    double *random_normalized_vector = (double *) malloc(n * sizeof(double));
+    random_normalized_vector = (double *) malloc(n * sizeof(double));
     if (NULL == random_normalized_vector) {
         status = MALLOC_FAILED_CODE;
         get_error_message(status);
         exit(status);
     }
-    double *normalized_eig_vec = malloc(n * sizeof(double));
-    if (NULL == normalized_eig_vec) {
-        status = MALLOC_FAILED_CODE;
-        get_error_message(status);
-        exit(status);
-    }
-    double *s = malloc(n * sizeof(double));
+    s = malloc(n * sizeof(double));
     if (NULL == s) {
         status = MALLOC_FAILED_CODE;
         get_error_message(status);
         exit(status);
     }
-    int *rows_helper = (int*)malloc(sizeof(int) * n);
+    rows_helper = (int*)malloc(sizeof(int) * n);
     if (NULL == rows_helper) {
         status = MALLOC_FAILED_CODE;
         get_error_message(status);
         exit(status);
     }
-    int *relevant_indices_helper = (int*)malloc(sizeof(int) * n);
+    relevant_indices_helper = (int*)malloc(sizeof(int) * n);
     if (NULL == rows_helper) {
         status = MALLOC_FAILED_CODE;
         get_error_message(status);
         exit(status);
     }
-    node **outer_array_helper = (node **) calloc(n, sizeof(node *));
+    outer_array_helper = (node **) calloc(n, sizeof(node *));
     if (NULL == outer_array_helper) {
         status = MALLOC_FAILED_CODE;
         get_error_message(status);
         exit(status);
     }
+    alloc->relevant_indices_helper = relevant_indices_helper;
+    alloc->onces_helper = onces_helper;
+    alloc->rows_helper = rows_helper;
+    alloc->outer_array_helper = outer_array_helper;
+    alloc->random_normalized_vector = random_normalized_vector;
+    alloc->s = s;
+    alloc->k = k;
+    alloc->f = f;
+    alloc->output_array = output_array;
+    return alloc;
+}
+pointers* initizlized(allocations *alloc, spmat *A){
+    pointers *main_pointer = (pointers*) malloc(sizeof(pointers));
+    main_pointer->random_normalized_vector = alloc->random_normalized_vector;
+    main_pointer->output_array = alloc->output_array;
+    main_pointer->outer_array_helper = alloc->outer_array_helper;
+    main_pointer->rows_helper = alloc->rows_helper;
+    main_pointer->relevant_indices_helper = alloc->relevant_indices_helper;
+    main_pointer->onces_helper = alloc->onces_helper;
+    main_pointer->s = alloc->s;
+    main_pointer->k = alloc->k;
+    main_pointer->f = alloc->f;
+    main_pointer->A_onces_num = A->onces_num;
+    main_pointer->A_outer_array_helper = A->private;
+    main_pointer->A_relevant_indices = A->relevant_indices;
+    main_pointer->A = A;
+    return main_pointer;
+
+}
+void outer_array_free(node** outer_array, int size) {
+    node* next_node, *current_node;
+    int  i;
+    for (i = 0; i < size; ++i) {
+        next_node = *(outer_array +i);
+        current_node = next_node;
+        while (current_node != NULL) {/*set currentNode to head, stop when empty*/
+            next_node = next_node->next;
+            free(current_node);
+            current_node = next_node;
+        }
+    }
+    free(outer_array);
 }
 
-void free_allocations(allocations *alloc){
-    free
+
+void free_allocations(pointers *main_pointer){
+    free(main_pointer->random_normalized_vector);
+    free(main_pointer->f);
+    free(main_pointer->relevant_indices_helper);
+    free(main_pointer->onces_helper);
+    free(main_pointer->rows_helper);
+    free(main_pointer->s);
+    free(main_pointer->k);
+    free(main_pointer->output_array);
+    free(main_pointer->A_relevant_indices);
+    free(main_pointer->A_onces_num);
+    free(main_pointer->A);
+    free(main_pointer);
 }
-*/
+

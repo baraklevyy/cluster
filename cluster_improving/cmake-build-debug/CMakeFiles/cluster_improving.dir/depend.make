@@ -52,7 +52,6 @@ CMakeFiles/cluster_improving.dir/main.c.obj: ../B.h
 CMakeFiles/cluster_improving.dir/main.c.obj: ../Common.h
 CMakeFiles/cluster_improving.dir/main.c.obj: ../ModularityGroupsDivision.h
 CMakeFiles/cluster_improving.dir/main.c.obj: ../SparseMatrix.h
-CMakeFiles/cluster_improving.dir/main.c.obj: ../Stack.h
 CMakeFiles/cluster_improving.dir/main.c.obj: ../Utility.h
 CMakeFiles/cluster_improving.dir/main.c.obj: ../main.c
 CMakeFiles/cluster_improving.dir/main.c.obj: ../vector.h
