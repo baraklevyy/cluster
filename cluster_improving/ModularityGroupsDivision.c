@@ -26,14 +26,6 @@ void modularity_division_rec(struct _spmat *A, int *k, struct _allocations *allo
     }
 */
     /*temporary number_of_1 counting*/
-
-    number_of_1 = 0;
-    for (i = 0; i < n; i++) {
-        if (*(alloc->s + i) == 1.0)
-            number_of_1++;
-    }
-
-
     /*no isolated nodes*/
     if(n == number_of_1 || number_of_1 == 0){
         *(number_of_groups) += 1;

@@ -1,54 +1,74 @@
+/*
+ * modularity_maximization.c
 
+ */
 #include <stdlib.h>
+
 #include "ModularityMaximization.h"
 
 
-void modularity_max(const struct _spmat *A, const int *k, int M, double *s, int *moved, int *indicies, int *number_of_1){
-    int i, j, n;
-    double improve;
-    int improve_index, A_size = A->n;
+void modularity_max(const struct _spmat *A, const int *k, int M, double *s, int *moved, int *indicies,int *number_of_1 ){
+    int i, j;
+    int improve_index;
     double delta_q;
-    n = A_size;
+    double improve;
+    int flag_first_iter =1; /* indicate if this first iteration of do-while loop ---> for number_of_1 */
+    int local_num_1 =0;
+    int n = A->n;
+
     do{
-        *(number_of_1) = 0;
+
         /* set to zero relevant elements of moved */
-        for(i = 0; i < n; i++){
+        for(i = 0; i<n; i++){
             moved[i]=0;
         }
-        find_improved_partition(A, k, M, s,moved, &improve_index, &improve, indicies, number_of_1);
+        find_improved_partition(A, k, M, s,moved, &improve_index, &improve, indicies,&local_num_1, flag_first_iter);
         if(improve_index == n-1){
             delta_q =0;
         }
         else{
             delta_q = improve;
         }
-        for (i= n - 1; i>improve_index; i--){
+        for (i=n-1; i>improve_index; i--){
             j = *(indicies +i);
             *(s +j ) = - *(s +j);
-
-            if(*(s + j) == -1.0)
-                *(number_of_1) -= 1;
-            else
-               *(number_of_1) += 1;
+            /* update counter for number of ones */
+            if(*(s +j) == -1){
+                local_num_1 -=1;
+            }
+            else local_num_1 +=1;
         }
+        flag_first_iter =0;
     }
     while( IS_POSITIVE(delta_q));
+    *number_of_1 =local_num_1;
     return;
 }
 
 
-void find_improved_partition(const struct _spmat *A, const int *k, int M, double *s,int *moved, int *improve_index,double *max_improve, int *indicies, int *number_of_1){
-    int i, n;
+void find_improved_partition(const struct _spmat *A, const int *k, int M, double *s,int *moved, int *improve_index,double *max_improve, int *indicies, int *number_of_1, int flag_first_iter){
+    int i;
     double prev_improve,curr_improve;
     int ind_for_move;
     double score;
-    n = A->n;
-    for(i=0;i < n ; i++){
+    int n = A->n;
+    for(i=0;i< n; i++){
         find_vertex(A, k, M,s, moved, &ind_for_move, &score);
 
         *(s + ind_for_move) = -*(s + ind_for_move); /*move vertex */
-        if(*(s + ind_for_move) == 1.0) number_of_1 ++;
 
+        /* number of 1 */
+        if(flag_first_iter == 1 ){ /*this is the first iteration */
+            if(*(s + ind_for_move) == 1){
+                *number_of_1 += 1;
+            }
+        }
+        else{
+            if(*(s + ind_for_move) == 1){
+                *number_of_1 += 1;
+            }
+            else *number_of_1 -= 1;
+        }
         *(indicies + i) = ind_for_move;
         if (i==0){
             *improve_index =i;
@@ -68,20 +88,14 @@ void find_improved_partition(const struct _spmat *A, const int *k, int M, double
     return;
 }
 
-/*double compute_modularity(const struct _spmat *A, const int *k, int M, int A_size, int *s,double *b_mult_s){
-    double res;
-    b_mult(A, k, M, s, b_mult_s , f, 0);
-    res = vec_dot_int(s, b_mult_s, A_size);
-    return res;
-}
-*/
 
 void find_vertex(const struct _spmat *A, const int *k, int M,double *s, int *moved, int *index_to_move, double *score){
     /* find vertex with biggest increase */
     double diff_mod;
-    int i,first_moved, n;
-    n = A->n;
+    int i,first_moved;
+    int n = A->n;
     first_moved =0;
+
     for(i=0;i< n ;i++){
         if(*(moved + i)==0){ /* true only for vertexes that is not moved */
             if(first_moved ==0){
@@ -107,21 +121,21 @@ void find_vertex(const struct _spmat *A, const int *k, int M,double *s, int *mov
 }
 
 double compute_score(const struct _spmat *A, const int *k, int M, double *s, int row_number){
-    int column, n;
+    int column;
     node **rows = A->private;
     node *current = rows[row_number];
     double di,dgii;
     double res=0, temp=0;
-    n = A->n;
-    for (column=0;column < n; column++){
+    int n =  A->n;
+    for (column=0;column <n; column++){
         while (current != NULL) {
             if (current->col == column) {
-                temp += (1.0 - ((double)k[row_number] * (double)k[column]) / (double)M) * s[column];
+                temp += (1.0 - ((double)k[row_number] * (double)k[column]) / (double)M) * (double)s[column];
 
                 break;
             }
             else if (current->col > column || !current->next) {
-                temp += (-((double)k[row_number] * (double)k[column]) / (double)M) * s[column] ;
+                temp += (-((double)k[row_number] * (double)k[column]) / (double)M) * (double)s[column] ;
                 break;
             }
             current = current->next;

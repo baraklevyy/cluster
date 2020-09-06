@@ -13,7 +13,7 @@ int main(int argc, char *argv[]) {
     /* start measuring time */
     start = clock();
     Status status = INVALID_STATUS_CODE;
-    int number_of_1 = 0 , M, n, sanity_check, size, i;
+    int number_of_1 = 0 , M, n, sanity_check, size;
     int number_of_groups, number_of_written_elements;
     pointers *main_pointer;
 
