@@ -2,12 +2,12 @@
 #include "Algorithm2.h"
 
 Status algorithm2_modified(const struct _spmat *A, const int *k, int M, allocations *alloc, double l1_norm, int *number_of_1) {
-    Status status = INVALID_STATUS_CODE;
-    int n = A->n;
-    *(number_of_1) = 0;
-
+    Status status;
     double eig_val;
-    int i;
+    int i, n;
+    status = INVALID_STATUS_CODE;
+    *(number_of_1) = 0;
+    n = A->n;
     /*get eigen_vector*/
     power_iteration_modified(A, k, M, alloc, l1_norm);
     /* get corresponding eigenvalue */
@@ -32,7 +32,7 @@ Status algorithm2_modified(const struct _spmat *A, const int *k, int M, allocati
             *(alloc->s + i) = -1.0;
     }
 
-    // we now use random_normalized_vector to store the result of B_gag[g] * s ;
+    /* we now use random_normalized_vector to store the result of B_gag[g] * s */
     b_mult(A, k, M, alloc->s, alloc->random_normalized_vector , alloc->f, 0);
     /*here we compute deltaQ - Modularity change*/
     if (!IS_POSITIVE(vec_dot(alloc->s, alloc->random_normalized_vector, n))) {

@@ -1,6 +1,3 @@
-//
-// Created by barak on 26/08/2020.
-//
 
 #ifndef CLUSTER_IMPROVING_B_H
 #define CLUSTER_IMPROVING_B_H
@@ -32,5 +29,11 @@ void rows_arrangment(struct _spmat *A, double *s, int number_of_1, int *rows_hel
 void split_mat(struct _spmat *A, struct _spmat *A1, struct _spmat *A2, int **k, double *s,
                int number_of_1, int **rows_helper, int **onces_helper, node ***outer_array_helper, int **relevant_indices_helper);
 
+void split_mat_modified(struct _spmat *A, struct _spmat *A1, struct _spmat *A2, allocations *alloc, int number_of_1);
 
-#endif //CLUSTER_IMPROVING_B_H
+
+void k_arrangment_modified(struct _spmat *A,allocations *alloc, int number_of_1);
+void rows_arrangment_modified(struct _spmat *A, allocations *alloc, int number_of_1);
+
+
+#endif /*CLUSTER_IMPROVING_B_H*/

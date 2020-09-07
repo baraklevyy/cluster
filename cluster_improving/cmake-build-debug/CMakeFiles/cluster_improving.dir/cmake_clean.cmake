@@ -5,7 +5,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/cluster_improving.dir/ModularityGroupsDivision.c.obj"
   "CMakeFiles/cluster_improving.dir/ModularityMaximization.c.obj"
   "CMakeFiles/cluster_improving.dir/SparseMatrix.c.obj"
-  "CMakeFiles/cluster_improving.dir/Stack.c.obj"
   "CMakeFiles/cluster_improving.dir/Utility.c.obj"
   "CMakeFiles/cluster_improving.dir/main.c.obj"
   "CMakeFiles/cluster_improving.dir/vector.c.obj"

@@ -35,11 +35,6 @@ CMakeFiles/cluster_improving.dir/SparseMatrix.c.obj: ../Common.h
 CMakeFiles/cluster_improving.dir/SparseMatrix.c.obj: ../SparseMatrix.c
 CMakeFiles/cluster_improving.dir/SparseMatrix.c.obj: ../SparseMatrix.h
 
-CMakeFiles/cluster_improving.dir/Stack.c.obj: ../Common.h
-CMakeFiles/cluster_improving.dir/Stack.c.obj: ../SparseMatrix.h
-CMakeFiles/cluster_improving.dir/Stack.c.obj: ../Stack.c
-CMakeFiles/cluster_improving.dir/Stack.c.obj: ../Stack.h
-
 CMakeFiles/cluster_improving.dir/Utility.c.obj: ../Common.h
 CMakeFiles/cluster_improving.dir/Utility.c.obj: ../SparseMatrix.h
 CMakeFiles/cluster_improving.dir/Utility.c.obj: ../Utility.c

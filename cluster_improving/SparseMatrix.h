@@ -1,6 +1,3 @@
-//
-// Created by barak on 26/08/2020.
-//
 
 #ifndef CLUSTER_IMPROVING_SPARSEMATRIX_H
 #define CLUSTER_IMPROVING_SPARSEMATRIX_H
@@ -37,4 +34,4 @@ spmat* spmat_allocate_list(int n);
  *  Allocates a new arrays sparse matrix of size n with nnz non-zero elements
  *	spmat* spmat_allocate_array(int n, int nnz);
  * */
-#endif //CLUSTER_IMPROVING_SPARSEMATRIX_H
+#endif /*CLUSTER_IMPROVING_SPARSEMATRIX_H */

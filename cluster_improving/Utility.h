@@ -1,6 +1,3 @@
-//
-// Created by barak on 26/08/2020.
-//
 
 #ifndef CLUSTER_IMPROVING_UTILITY_H
 #define CLUSTER_IMPROVING_UTILITY_H
@@ -12,4 +9,4 @@ Status isolated_nodes_handling(int argc, char** argv, int *n, int *output_array,
 
 
 
-#endif //CLUSTER_IMPROVING_UTILITY_H
+#endif /*CLUSTER_IMPROVING_UTILITY_H*/

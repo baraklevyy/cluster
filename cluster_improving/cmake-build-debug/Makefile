@@ -304,33 +304,6 @@ SparseMatrix.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\cluster_improving.dir\build.make CMakeFiles/cluster_improving.dir/SparseMatrix.c.s
 .PHONY : SparseMatrix.c.s
 
-Stack.obj: Stack.c.obj
-
-.PHONY : Stack.obj
-
-# target to build an object file
-Stack.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\cluster_improving.dir\build.make CMakeFiles/cluster_improving.dir/Stack.c.obj
-.PHONY : Stack.c.obj
-
-Stack.i: Stack.c.i
-
-.PHONY : Stack.i
-
-# target to preprocess a source file
-Stack.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\cluster_improving.dir\build.make CMakeFiles/cluster_improving.dir/Stack.c.i
-.PHONY : Stack.c.i
-
-Stack.s: Stack.c.s
-
-.PHONY : Stack.s
-
-# target to generate assembly for a file
-Stack.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\cluster_improving.dir\build.make CMakeFiles/cluster_improving.dir/Stack.c.s
-.PHONY : Stack.c.s
-
 Utility.obj: Utility.c.obj
 
 .PHONY : Utility.obj
@@ -439,9 +412,6 @@ help:
 	@echo ... SparseMatrix.obj
 	@echo ... SparseMatrix.i
 	@echo ... SparseMatrix.s
-	@echo ... Stack.obj
-	@echo ... Stack.i
-	@echo ... Stack.s
 	@echo ... Utility.obj
 	@echo ... Utility.i
 	@echo ... Utility.s

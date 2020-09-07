@@ -4,7 +4,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <mem.h>
 #include "Common.h"
 #include "SparseMatrix.h"
 
@@ -15,10 +14,10 @@ Status generate_graph() {
     Status status = INVALID_STATUS_CODE;
     FILE *file;
     int sanity_check;
-    int arr[21] = {6,2,1,2,3,0,2,3,2,0,1,3,1,4,5,2,3,5,2,3,4};
-    file = fopen("C:\\Users\\barak\\CLionProjects\\cluster_improving\\graph6.in", "wb");
-    sanity_check = fwrite(arr, sizeof(int), 21, file);
-    if (21 != sanity_check) {
+    int arr[23] = {6,3,3,4,5,2,2,5,3,1,3,5,3,0,2,4,2,0,3,3,0,1,2};
+    file = fopen("C:\\Users\\barak\\CLionProjects\\cluster_improving\\graph6_test.in", "wb");
+    sanity_check = fwrite(arr, sizeof(int), 23, file);
+    if (23 != sanity_check) {
         status = FREAD_FAILED_CODE;
         get_error_message(status);
         goto l_cleanup;
@@ -29,23 +28,6 @@ Status generate_graph() {
     l_cleanup:
     exit(status);
 
-}
-void subtract_vector_from_mat(const struct _spmat *A, int *k, int M, int *g, int ng, int row, int *result) {
-    int i;
-    node** matrix_rows = A->private;
-    node* current = matrix_rows[row];
-    for (i = 0; i < ng; ++i) {
-        if (g[i] == current->col) {
-            result[i] = 1 - (k[row] * k[i]) / M;
-        }
-        else {
-            while (g[i] >= current->col && current != NULL) {
-                current = current->next;
-            }
-            if (g[i] == current->col) result[i] = 1 - (k[row] * k[i]) / M;
-            if (g[i] < current->col) continue;
-        }
-    }
 }
 
 
@@ -72,7 +54,7 @@ Status extract_matrix_size(int argc, char** argv, int *n) {
     Status status = INVALID_STATUS_CODE;
     int sanity_check;
     FILE *input_file;
-    if (argc != 2) {
+    if (argc != 3) {
         status = INVALID_ARGUMENTS_CODE;
         get_error_message(status);
         exit(status);
@@ -153,12 +135,12 @@ Status graph_loading(int argc, char** argv, struct _spmat *A, int *k, int *M, in
     FILE* input_file;
     *M = 0;/*initializing the graph total ranking*/
 
-    if (argc != 2) {
+    if (argc != 3) {
         status = INVALID_ARGUMENTS_CODE;
         get_error_message(status);
         exit(status);
     }
-    input_file = fopen(argv[1], "rb");
+    input_file = fopen(*(argv + 1), "rb");
     if (NULL == input_file) {
         status = FOPEN_FAILED_CODE;
         get_error_message(status);

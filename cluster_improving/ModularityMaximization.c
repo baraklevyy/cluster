@@ -1,7 +1,4 @@
-/*
- * modularity_maximization.c
 
- */
 #include <stdlib.h>
 
 #include "ModularityMaximization.h"

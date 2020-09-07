@@ -112,12 +112,6 @@
 		<Unit filename="C:/Users/barak/CLionProjects/cluster_improving/SparseMatrix.h">
 			<Option target="cluster_improving"/>
 		</Unit>
-		<Unit filename="C:/Users/barak/CLionProjects/cluster_improving/Stack.c">
-			<Option target="cluster_improving"/>
-		</Unit>
-		<Unit filename="C:/Users/barak/CLionProjects/cluster_improving/Stack.h">
-			<Option target="cluster_improving"/>
-		</Unit>
 		<Unit filename="C:/Users/barak/CLionProjects/cluster_improving/Utility.c">
 			<Option target="cluster_improving"/>
 		</Unit>

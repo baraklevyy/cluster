@@ -49,20 +49,10 @@ double vec_dot(const double *v1, const double *v2, int size) {
     return res;
 }
 
-double vec_dot_int(const int *v1, const double *v2, int size) {
-    double res = 0;
-    int i;
-
-    for (i = 0; i < size; i++)
-        res += (double)*(v1 + i) * *(v2 + i);
-
-    return res;
-}
-
 void generate_random_normalized_vector(double *v,  int size) {
+    int i;
     /* seed random */
     srand((unsigned int) time(0));
-    int i;
     for (i = 0; i < size; i++)
         *(v + i) = (double)rand() / (double)RAND_MAX;
     vec_normalize(v, size);

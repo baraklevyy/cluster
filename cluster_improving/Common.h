@@ -1,6 +1,3 @@
-//
-// Created by barak on 26/08/2020.
-//
 
 #ifndef CLUSTER_IMPROVING_COMMON_H
 #define CLUSTER_IMPROVING_COMMON_H
@@ -27,7 +24,7 @@ typedef enum _Status {
     REACHED_MAX_NUMBER_OF_ITERATION,
     NEGATIVE_EIGEN_VALUE,
     ZERO_NUMBER_OF_EDGES,
-    //COUNTER FOR ERRORS
+    /*COUNTER FOR ERRORS*/
     STATUS_CODE_COUNT
 }Status;
 void get_error_message(Status result);
@@ -67,4 +64,4 @@ void free_allocations(pointers *main_pointer);
 void outer_array_free(node** outer_array, int size);
 
 
-#endif //CLUSTER_IMPROVING_COMMON_H
+#endif /*CLUSTER_IMPROVING_COMMON_H*/

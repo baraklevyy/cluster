@@ -1,6 +1,3 @@
-//
-// Created by barak on 26/08/2020.
-//
 
 #include "Common.h"
 #include "Common.h"
@@ -124,7 +121,7 @@ allocations* alloc_allocations(int n) {
         get_error_message(status);
         exit(status);
     }
-    outer_array_helper = (node **) calloc(n, sizeof(node *));
+    outer_array_helper = (node **) malloc(n * sizeof(node *));
     if (NULL == outer_array_helper) {
         status = MALLOC_FAILED_CODE;
         get_error_message(status);
@@ -142,7 +139,7 @@ allocations* alloc_allocations(int n) {
     return alloc;
 }
 pointers* initizlized(allocations *alloc, spmat *A){
-    pointers *main_pointer = (pointers*) malloc(sizeof(pointers));
+    pointers * const main_pointer = (pointers*) malloc(sizeof(pointers));
     main_pointer->random_normalized_vector = alloc->random_normalized_vector;
     main_pointer->output_array = alloc->output_array;
     main_pointer->outer_array_helper = alloc->outer_array_helper;
@@ -161,17 +158,20 @@ pointers* initizlized(allocations *alloc, spmat *A){
 }
 void outer_array_free(node** outer_array, int size) {
     node* next_node, *current_node;
-    int  i;
+    int  i, num;
     for (i = 0; i < size; ++i) {
         next_node = *(outer_array +i);
         current_node = next_node;
+        num = 0;
         while (current_node != NULL) {/*set currentNode to head, stop when empty*/
+            num += 1;
             next_node = next_node->next;
             free(current_node);
             current_node = next_node;
         }
+        *(outer_array +i) = NULL;
     }
-    free(outer_array);
+
 }
 
 
@@ -186,7 +186,10 @@ void free_allocations(pointers *main_pointer){
     free(main_pointer->output_array);
     free(main_pointer->A_relevant_indices);
     free(main_pointer->A_onces_num);
+    /*corner case to check: the input is one click so maybe the A will be freed already in the ModularityGroupDivision*/
     free(main_pointer->A);
+    free(main_pointer->outer_array_helper);
+    free(main_pointer->A_outer_array_helper);
     free(main_pointer);
 }
 
