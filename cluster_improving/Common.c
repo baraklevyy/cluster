@@ -1,14 +1,11 @@
 
 #include "Common.h"
-#include "Common.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include "SparseMatrix.h"
 
 void get_error_message(Status result) {
-
     char * message = NULL;
-
     switch (result) {
         case SUCCESS_STATUS_CODE:
             message = "SUCCESS";
@@ -58,8 +55,6 @@ void get_error_message(Status result) {
             message = "ZERO_NUMBER_OF_EDGES";
             printf("%s", message);
             break;
-
-
         default:
             message = "UNKNOWN ERROR";
             printf("%s", message);
@@ -73,6 +68,11 @@ allocations* alloc_allocations(int n) {
     double *f, *random_normalized_vector, *s;
     node **outer_array_helper;
     allocations *alloc = (allocations *) malloc(sizeof(allocations));
+    if (NULL == alloc) {
+        status = MALLOC_FAILED_CODE;
+        get_error_message(status);
+        exit(status);
+    }
     k = (int *) malloc(n * sizeof(int));
     if (NULL == k) {
         status = MALLOC_FAILED_CODE;
@@ -138,8 +138,14 @@ allocations* alloc_allocations(int n) {
     alloc->output_array = output_array;
     return alloc;
 }
-pointers* initizlized(allocations *alloc, spmat *A){
+pointers* initialized_pointer(allocations *alloc, spmat *A){
+    Status status = INVALID_STATUS_CODE;
     pointers * const main_pointer = (pointers*) malloc(sizeof(pointers));
+    if (NULL == main_pointer) {
+        status = MALLOC_FAILED_CODE;
+        get_error_message(status);
+        exit(status);
+    }
     main_pointer->random_normalized_vector = alloc->random_normalized_vector;
     main_pointer->output_array = alloc->output_array;
     main_pointer->outer_array_helper = alloc->outer_array_helper;
@@ -187,7 +193,7 @@ void free_allocations(pointers *main_pointer){
     free(main_pointer->A_relevant_indices);
     free(main_pointer->A_onces_num);
     /*corner case to check: the input is one click so maybe the A will be freed already in the ModularityGroupDivision*/
-    free(main_pointer->A);
+    /*free(main_pointer->A);*/
     free(main_pointer->outer_array_helper);
     free(main_pointer->A_outer_array_helper);
     free(main_pointer);

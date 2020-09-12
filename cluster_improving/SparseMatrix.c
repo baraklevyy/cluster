@@ -65,7 +65,7 @@ void add_row_list(struct _spmat *A, const int *row, int size, int i) {
 }
 
 
-
+/*
 void list_cleanup(struct _spmat *A) {
     node** outer_array;
     node* next_node, *current_node;
@@ -76,33 +76,22 @@ void list_cleanup(struct _spmat *A) {
     for (i = 0; i < n; ++i) {
         next_node = *(outer_array +i);
         current_node = next_node;
-        while (current_node != NULL) {/*set currentNode to head, stop when empty*/
+        while (current_node != NULL) {
             next_node = next_node->next;
             free(current_node);
             current_node = next_node;
         }
     }
-    /*
-    free(A->onces_num);
-    free(A->relevant_indices);
-     */
-    free(outer_array);
-    /*free(A);*/
-}
 
+    free(outer_array);
+
+}
+*/
 spmat* spmat_allocate_list(int n) {
     Status status = INVALID_STATUS_CODE;
     spmat *sp = NULL;
     node **rows = NULL;
     int i, *onces, *relevant_indices;
-    /*Initializing functions pointers*/
-    void (*cleaup_ptr)(struct _spmat *);
-    void (*add_row_ptr)(struct _spmat *, const int *, int, int);
-    void (*mult_list_ptr)(const struct _spmat *, const double *, double *);
-    add_row_ptr = &(add_row_list);
-    cleaup_ptr = &(list_cleanup);
-    mult_list_ptr = &(list_multiplay);
-    /*Allocating spmat*/
     sp = (spmat *) malloc(sizeof(spmat));
     if (NULL == sp) {
         status = MALLOC_FAILED_CODE;
@@ -131,16 +120,11 @@ spmat* spmat_allocate_list(int n) {
     /* initialized relevant indices 0 - (n-1) */
     for(i = 0; i < n; i++)
         *(relevant_indices + i) = i;
-
     /*Initiazling variables*/
     sp->n = n;
     sp->private = rows;
     sp->onces_num = onces;
     sp->relevant_indices = relevant_indices;
-    sp->add_row = add_row_ptr;
-    sp->free = cleaup_ptr;
-    sp->mult = mult_list_ptr;
-
     status = SUCCESS_STATUS_CODE;
     return sp;
 

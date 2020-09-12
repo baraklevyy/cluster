@@ -173,9 +173,10 @@ Status graph_loading(int argc, char** argv, struct _spmat *A, int *k, int *M, in
             }
             *(current_vector + cur_neighbor_i) = current_neighbor;/*loading the neighbor into the vector to be inserted into the sparse matrix*/
         }
-        A->add_row(A, current_vector, current_num_of_neighbors, current_row); /*Loading the sparse matrix*/
+        add_row_list(A, current_vector, current_num_of_neighbors, current_row); /*Loading the sparse matrix*/
     }
     status = SUCCESS_STATUS_CODE;
+    fclose(input_file);
     return status;
 }
 

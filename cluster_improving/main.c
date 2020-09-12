@@ -17,10 +17,11 @@ int main(int argc, char *argv[]) {
     spmat *A;
     FILE *write_ptr;
     allocations *alloc;
-
-    int v_elem_num, index, i;
+/*
+    int v_elem_num, index;
+    int i;
     node *nnpointer, **nnouterarry ;
-
+*/
 
 /* start measuring time */
     start = clock();
@@ -40,7 +41,10 @@ int main(int argc, char *argv[]) {
     alloc = alloc_allocations(n);
     A = spmat_allocate_list(n);
     status = graph_loading(argc, argv, A, alloc->k, &M, alloc->rows_helper);
-    main_pointer = initizlized(alloc, A);
+    main_pointer = initialized_pointer(alloc, A);
+
+
+/*
 
     nnouterarry = A->private;
     for (i = 0; i < A->n; ++i) {
@@ -56,6 +60,7 @@ int main(int argc, char *argv[]) {
             nnpointer = nnpointer->next;
         }
     }
+    */
 
     if(M == 0){
         status = ZERO_NUMBER_OF_EDGES;
@@ -64,12 +69,10 @@ int main(int argc, char *argv[]) {
     }
 
 
-
-
-
     modularity_division_rec(A, alloc->k, alloc, M, -1.0, number_of_1, &number_of_groups, &number_of_written_elements);
 /*
-    nnouterarry = A->private;
+ *
+    nnouterarry = main_pointer->A_outer_array_helper;
     for (i = 0; i < A->n; ++i) {
         nnpointer = ((node*)A->private + i);
         nnpointer = nnouterarry[i];

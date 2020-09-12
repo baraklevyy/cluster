@@ -106,6 +106,12 @@
 		<Unit filename="C:/Users/barak/CLionProjects/cluster_improving/ModularityMaximization.h">
 			<Option target="cluster_improving"/>
 		</Unit>
+		<Unit filename="C:/Users/barak/CLionProjects/cluster_improving/OptimizationMaximization.c">
+			<Option target="cluster_improving"/>
+		</Unit>
+		<Unit filename="C:/Users/barak/CLionProjects/cluster_improving/OptimizationMaximization.h">
+			<Option target="cluster_improving"/>
+		</Unit>
 		<Unit filename="C:/Users/barak/CLionProjects/cluster_improving/SparseMatrix.c">
 			<Option target="cluster_improving"/>
 		</Unit>
@@ -119,6 +125,12 @@
 			<Option target="cluster_improving"/>
 		</Unit>
 		<Unit filename="C:/Users/barak/CLionProjects/cluster_improving/main.c">
+			<Option target="cluster_improving"/>
+		</Unit>
+		<Unit filename="C:/Users/barak/CLionProjects/cluster_improving/modmax.c">
+			<Option target="cluster_improving"/>
+		</Unit>
+		<Unit filename="C:/Users/barak/CLionProjects/cluster_improving/modmax.h">
 			<Option target="cluster_improving"/>
 		</Unit>
 		<Unit filename="C:/Users/barak/CLionProjects/cluster_improving/vector.c">

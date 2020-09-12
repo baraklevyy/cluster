@@ -277,6 +277,33 @@ ModularityMaximization.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\cluster_improving.dir\build.make CMakeFiles/cluster_improving.dir/ModularityMaximization.c.s
 .PHONY : ModularityMaximization.c.s
 
+OptimizationMaximization.obj: OptimizationMaximization.c.obj
+
+.PHONY : OptimizationMaximization.obj
+
+# target to build an object file
+OptimizationMaximization.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\cluster_improving.dir\build.make CMakeFiles/cluster_improving.dir/OptimizationMaximization.c.obj
+.PHONY : OptimizationMaximization.c.obj
+
+OptimizationMaximization.i: OptimizationMaximization.c.i
+
+.PHONY : OptimizationMaximization.i
+
+# target to preprocess a source file
+OptimizationMaximization.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\cluster_improving.dir\build.make CMakeFiles/cluster_improving.dir/OptimizationMaximization.c.i
+.PHONY : OptimizationMaximization.c.i
+
+OptimizationMaximization.s: OptimizationMaximization.c.s
+
+.PHONY : OptimizationMaximization.s
+
+# target to generate assembly for a file
+OptimizationMaximization.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\cluster_improving.dir\build.make CMakeFiles/cluster_improving.dir/OptimizationMaximization.c.s
+.PHONY : OptimizationMaximization.c.s
+
 SparseMatrix.obj: SparseMatrix.c.obj
 
 .PHONY : SparseMatrix.obj
@@ -358,6 +385,33 @@ main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\cluster_improving.dir\build.make CMakeFiles/cluster_improving.dir/main.c.s
 .PHONY : main.c.s
 
+modmax.obj: modmax.c.obj
+
+.PHONY : modmax.obj
+
+# target to build an object file
+modmax.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\cluster_improving.dir\build.make CMakeFiles/cluster_improving.dir/modmax.c.obj
+.PHONY : modmax.c.obj
+
+modmax.i: modmax.c.i
+
+.PHONY : modmax.i
+
+# target to preprocess a source file
+modmax.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\cluster_improving.dir\build.make CMakeFiles/cluster_improving.dir/modmax.c.i
+.PHONY : modmax.c.i
+
+modmax.s: modmax.c.s
+
+.PHONY : modmax.s
+
+# target to generate assembly for a file
+modmax.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\cluster_improving.dir\build.make CMakeFiles/cluster_improving.dir/modmax.c.s
+.PHONY : modmax.c.s
+
 vector.obj: vector.c.obj
 
 .PHONY : vector.obj
@@ -409,6 +463,9 @@ help:
 	@echo ... ModularityMaximization.obj
 	@echo ... ModularityMaximization.i
 	@echo ... ModularityMaximization.s
+	@echo ... OptimizationMaximization.obj
+	@echo ... OptimizationMaximization.i
+	@echo ... OptimizationMaximization.s
 	@echo ... SparseMatrix.obj
 	@echo ... SparseMatrix.i
 	@echo ... SparseMatrix.s
@@ -418,6 +475,9 @@ help:
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
+	@echo ... modmax.obj
+	@echo ... modmax.i
+	@echo ... modmax.s
 	@echo ... vector.obj
 	@echo ... vector.i
 	@echo ... vector.s

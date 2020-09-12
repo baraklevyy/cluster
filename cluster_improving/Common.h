@@ -1,10 +1,11 @@
 
 #ifndef CLUSTER_IMPROVING_COMMON_H
 #define CLUSTER_IMPROVING_COMMON_H
-
+#define LOWEST_VALUE -DBL_MAX
 #define IS_POSITIVE(X) ((X) > 0.00001)
 #define MAX(x, y) (((x) > (y)) ? (x) : (y))
 #define MIN(x, y) (((x) < (y)) ? (x) : (y))
+#include <float.h>
 #include "SparseMatrix.h"
 
 /*Creating Linked-list. Each cell contain the column index, data and next reference*/
@@ -40,6 +41,7 @@ typedef struct _allocations {
     int *output_array;
     node **outer_array_helper;
 } allocations;
+
 typedef struct _pointers {
     int *k;
     double *s;
@@ -50,18 +52,16 @@ typedef struct _pointers {
     int *relevant_indices_helper;
     int *output_array;
     node **outer_array_helper;
-
+    /*spmat first pointers*/
     int *A_onces_num;
     int *A_relevant_indices;
     node **A_outer_array_helper;
     spmat *A;
-
-
 } pointers;
-pointers* initizlized(allocations *alloc, spmat *A);
+
+pointers* initialized_pointer(allocations *alloc, spmat *A);
 allocations* alloc_allocations(int n);
 void free_allocations(pointers *main_pointer);
 void outer_array_free(node** outer_array, int size);
-
 
 #endif /*CLUSTER_IMPROVING_COMMON_H*/

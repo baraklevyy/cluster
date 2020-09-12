@@ -23,13 +23,8 @@ void b_mult(const struct _spmat *A, const int *k, int M, double *v, double *res,
        total_i -= (*(f + i)) * (*(v + i)); /*Bgag Kroneaker delta element*/
        total_i += l1_norm * *(v + i);
        *(res + i) = total_i;
-
     }
-
-    A->mult(A, v, res);
-
-
-
+    list_multiplay(A, v, res);
 }
 
 void f_array(const struct _spmat *A, const int *k, int M, double *f){
@@ -56,7 +51,7 @@ double L1_norm(const struct _spmat *A, const int *k, int M, double *f){
     node **outer_Array, *current_node;
     outer_Array = A->private;
     for(i = 0; i < n; i++){
-        reuse_sum += (double)(*(k +i));
+        reuse_sum += (double)(*(k +i ));
     }
     reuse_sum /= (double)M;
     /*outer loop calculate every single line*/
@@ -84,14 +79,14 @@ double L1_norm(const struct _spmat *A, const int *k, int M, double *f){
 
 void power_iteration_modified(const struct _spmat *A, const int *k, int M, allocations *alloc, double L1norm) {
 
-    int i/* num = 0*/;
+    int i, num = 0;
     int n = A->n;
     /*int max_num_of_iteration = (n * n * n * n * n * n * n) * 1000;*/
 
     generate_random_normalized_vector(alloc->random_normalized_vector, n);
 
     while (1) {
-
+        num += 1;
         b_mult(A, k, M, alloc->random_normalized_vector, alloc->s, alloc->f, L1norm);
         vec_normalize(alloc->s, n);
         /*
@@ -109,6 +104,8 @@ void power_iteration_modified(const struct _spmat *A, const int *k, int M, alloc
         for (i = 0; i < n; i++)
             *(alloc->random_normalized_vector + i) = *(alloc->s + i);
     }
+    printf("total number of mult in Power_Iteration is %d\n", num);
+    fflush(stdout);
 }
 
 void power_iteration_eigval_modified(const struct _spmat *A, const int *k, int M, allocations *alloc,
@@ -189,7 +186,7 @@ void k_arrangment(struct _spmat *A, int **k, int number_of_1, double *s, int **r
 void rows_arrangment(struct _spmat *A, double *s, int number_of_1, int *rows_helper, node ***outer_array_helper) {
     int n = A->n;
     int i, k2_start_index = number_of_1, cur_col, cur_outer_arr_index;
-    node **tmp;
+    /*node **tmp; */
     node *current_node, *previous_node, *next_node;
 
     for (i = 0; i < n; i++) {
@@ -229,26 +226,22 @@ void rows_arrangment(struct _spmat *A, double *s, int number_of_1, int *rows_hel
                 current_node = next_node;
                 continue;
             }
+
             /*incrementing loop condition*/
             previous_node = current_node;
             current_node->col = (*(s + i) == 1.0) ? *(rows_helper + cur_col) : *(rows_helper + cur_col) - k2_start_index ;
             current_node = next_node;
         }
     }
-    /*pointers changing*/
-    /* *(tmp) = *(outer_array); */
+    for (i = 0; i < n; i++) {
+        *((node**)A->private + i) = *(*(outer_array_helper) + i);
+    }
+
+    /*
     tmp = (node**)A->private;
     A->private = *(outer_array_helper);
     *(outer_array_helper) = tmp;
-
-
-    /*
-    tmp = outer_array;
-    A->private = *(outer_array_helper) ;
-    *(outer_array_helper) = tmp;
-     */
-    /*free(tmp);*/
-    /*were going to use outer_arr_helper again so free it just in the end of the program*/
+    */
 }
 
 void split_mat(struct _spmat *A, struct _spmat *A1, struct _spmat *A2, int **k, double *s,
@@ -259,13 +252,6 @@ void split_mat(struct _spmat *A, struct _spmat *A1, struct _spmat *A2, int **k, 
 
     A1->n = number_of_1;
     A2->n = n - number_of_1;
-    /*Attributes assignment*/
-    A1->mult = A->mult;
-    A2->mult = A->mult;
-    A1->add_row = A->add_row;
-    A2->add_row = A->add_row;
-    A1->free = A->free;
-    A2->free = A->free;
     /* this function divide vector k into 2 groups, same for onces_num vector */
     k_arrangment(A, k, number_of_1, s, rows_helper, onces_helper, relevant_indices_helper);
 
@@ -469,13 +455,6 @@ void split_mat_modified(struct _spmat *A, struct _spmat *A1, struct _spmat *A2, 
 
     A1->n = number_of_1;
     A2->n = n - number_of_1;
-    /*Attributes assignment*/
-    A1->mult = A->mult;
-    A2->mult = A->mult;
-    A1->add_row = A->add_row;
-    A2->add_row = A->add_row;
-    A1->free = A->free;
-    A2->free = A->free;
     /* this function divide vector k into 2 groups, same for onces_num vector */
     k_arrangment_modified(A, alloc, number_of_1);
 
