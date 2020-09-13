@@ -6,6 +6,7 @@
 #include "OptimizationMaximization.h"
 #include "modmax.h"
 
+
 void modularity_division_rec(struct _spmat *A, int *k, struct _allocations *alloc, int M, double L1_NORM, int number_of_1,
                              int *number_of_groups, int *number_of_written_elements){
     Status status;
@@ -16,9 +17,23 @@ void modularity_division_rec(struct _spmat *A, int *k, struct _allocations *allo
 /*
     int v_elem_num, index;
     node *nnpointer, **nnouterarry ;
+printf("\n#################################");
+    nnouterarry = A->private;
+    for (i = 0; i < A->n; ++i) {
+        nnpointer = ((node*)A->private + i);
+        nnpointer = nnouterarry[i];
+        v_elem_num = *(A->onces_num + i);
+        index = 0;
+        printf("\n%s ","|->");
+        fflush(stdout);
+        for (index= 0; index < v_elem_num; index++) {
+            printf("%d ->",nnpointer->col);
+            fflush(stdout);
+            nnpointer = nnpointer->next;
+        }
+    }
+    printf("\n#################################\n");
 */
-
-
     /* f has to be changes from step to another*/
     f_array(A, k, M, alloc->f);
     /*we have to calculate L1_NORM just on the first iteration, L1_NORM set to -1.0 in main just for the first time*/
@@ -31,12 +46,12 @@ void modularity_division_rec(struct _spmat *A, int *k, struct _allocations *allo
    /* modularity_max_modified(A, k, M, alloc->s, alloc->rows_helper, alloc->onces_helper, &number_of_1);*/
     /*modularity_max(A, k, M, alloc->s, alloc->rows_helper, alloc->onces_helper, &number_of_1);*/
     modularity_max1(A, k, M, alloc->s, alloc->rows_helper, alloc->onces_helper, &number_of_1);
-/*
+  /*  printf("\n#################################");
     for(i=0;i<n;i++){
         printf("\ns[%d]=%f",i,*(alloc->s + i));
         fflush(stdout);
     }
-*/
+    printf("\n#################################\n");*/
     /*temporary number_of_1 counting*/
     /*no isolated nodes*/
     /*
@@ -56,7 +71,7 @@ void modularity_division_rec(struct _spmat *A, int *k, struct _allocations *allo
             *(number_of_written_elements) += 1;
         }
         outer_array_free(A->private, A->n);
-        free(A);
+        /*free(A);*/
     }
     else {
 
@@ -74,10 +89,21 @@ void modularity_division_rec(struct _spmat *A, int *k, struct _allocations *allo
         }
         /*split_mat_modified(A,A1,A2,alloc,number_of_1);*/
 
-        split_mat(A, A1, A2, &k, alloc->s, number_of_1, &(alloc->rows_helper), &(alloc->onces_helper), &(alloc->outer_array_helper),
-                  &(alloc->relevant_indices_helper));
 
 /*
+
+        printf("\n#################################");
+        for(i=0;i<A->n;i++){
+            printf("\nA1.onces_num[%d]=%d",i,*(A->onces_num + i));
+            fflush(stdout);
+        }
+        printf("\n#################################\n");
+
+*/
+        split_mat(A, A1, A2, &k, alloc->s, number_of_1, &(alloc->rows_helper), &(alloc->onces_helper), &(alloc->outer_array_helper),
+                  &(alloc->relevant_indices_helper));
+/*
+
         nnouterarry = A->private;
         for (i = 0; i < A->n; ++i) {
             nnpointer = ((node*)A->private + i);
@@ -87,11 +113,27 @@ void modularity_division_rec(struct _spmat *A, int *k, struct _allocations *allo
             printf("\n%s ","|->");
             fflush(stdout);
             for (index= 0; index < v_elem_num; index++) {
-                printf("%d ->",nnpointer->original);
+                printf("%d ->",nnpointer->col);
                 fflush(stdout);
                 nnpointer = nnpointer->next;
             }
         }
+
+
+
+        printf("\n#################################");
+        for(i=0;i<A1->n;i++){
+            printf("\nA1.onces_num[%d]=%d",i,*(A1->onces_num + i));
+            fflush(stdout);
+        }
+        printf("\n#################################\n");
+        printf("\n#################################");
+        for(i=0;i<A2->n;i++){
+            printf("\nA2.onces_num[%d]=%d",i,*(A2->onces_num + i));
+            fflush(stdout);
+        }
+        printf("\n#################################\n");
+
 
         for(i=0;i<n;i++){
             printf("\nk[%d]=%d",i,*(k + i));
@@ -112,8 +154,9 @@ void modularity_division_rec(struct _spmat *A, int *k, struct _allocations *allo
 */
         modularity_division_rec(A1, k, alloc, M, L1_NORM, number_of_1, number_of_groups, number_of_written_elements);
         modularity_division_rec(A2, k + number_of_1 , alloc, M, L1_NORM, number_of_1, number_of_groups, number_of_written_elements);
-        free(A);
+        /*free(A);*/
     }
+    free(A);
 }
 
 

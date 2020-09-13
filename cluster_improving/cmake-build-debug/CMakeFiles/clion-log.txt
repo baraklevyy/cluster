@@ -1,4 +1,4 @@
-"C:\Program Files\JetBrains\CLion 2020.2\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" C:\Users\barak\CLionProjects\cluster_improving
+"C:\Program Files\JetBrains\CLion 2020.2\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" C:\Users\barak\CLionProjects\stop_balagan\cluster_improving
 -- Configuring done
 -- Generating done
--- Build files have been written to: C:/Users/barak/CLionProjects/cluster_improving/cmake-build-debug
+-- Build files have been written to: C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/cmake-build-debug

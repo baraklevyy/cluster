@@ -131,7 +131,7 @@ void power_iteration_eigval_modified(const struct _spmat *A, const int *k, int M
 }
 /*Please check pointers of helper and k. This func swap between them*/
 void k_arrangment(struct _spmat *A, int **k, int number_of_1, double *s, int **rows_helper, int **onces_helper, int **relevant_indices_helper){
-    int *tmp, *pointer;
+    int *pointer;
     int i, n, k1_index = 0, k2_index = number_of_1;
     n = A->n;
     /*
@@ -167,20 +167,36 @@ void k_arrangment(struct _spmat *A, int **k, int number_of_1, double *s, int **r
      * After the end of this function, helper will store the the new column places in the indices of helper.
      * e.g: the new col for node number 4 will be helper[4]*/
     /*k and helper swap*/
+
+    for(i = 0; i < n; i++){
+        *(A->onces_num + i) = *(*(onces_helper) + i);
+        *(A->relevant_indices + i) = *(*(relevant_indices_helper) + i);
+    }
+    for(i = 0; i < n; i++){
+        *(*(relevant_indices_helper) + i) = *(*(rows_helper) + i);
+        *(*(onces_helper) + i) = *(*(k) + i);
+    }
+    for(i = 0; i < n; i++){
+        *(*(k) + i) = *(*(relevant_indices_helper) + i);
+        *(*(rows_helper) + i) = *(*(onces_helper) + i);
+    }
+
+
+    /*
     tmp = *k;
     *k = *rows_helper;
     *rows_helper = tmp;
 
-    /*onces_num and onces_helper swap*/
+
     tmp = A->onces_num;
     A->onces_num = *onces_helper;
     *onces_helper = tmp;
 
-    /*relevant_indices swap */
+
     tmp = A->relevant_indices;
     A->relevant_indices = *relevant_indices_helper;
     *relevant_indices_helper = tmp;
-
+*/
 }
 
 void rows_arrangment(struct _spmat *A, double *s, int number_of_1, int *rows_helper, node ***outer_array_helper) {

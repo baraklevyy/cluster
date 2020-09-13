@@ -1,3 +1,3 @@
-C:/Users/barak/CLionProjects/cluster_improving/cmake-build-debug/CMakeFiles/cluster_improving.dir
-C:/Users/barak/CLionProjects/cluster_improving/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/barak/CLionProjects/cluster_improving/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/cmake-build-debug/CMakeFiles/cluster_improving.dir
+C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/cmake-build-debug/CMakeFiles/rebuild_cache.dir
