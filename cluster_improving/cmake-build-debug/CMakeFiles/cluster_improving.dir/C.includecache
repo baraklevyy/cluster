@@ -41,22 +41,8 @@ Algorithm2.h
 C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/Algorithm2.h
 ModularityMaximization.h
 C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/ModularityMaximization.h
-OptimizationMaximization.h
-C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/OptimizationMaximization.h
-modmax.h
-C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/modmax.h
 
 C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/ModularityMaximization.h
-Common.h
-C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/Common.h
-SparseMatrix.h
-C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/SparseMatrix.h
-
-C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/OptimizationMaximization.h
-
-C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/SparseMatrix.h
-
-C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/modmax.h
 stdio.h
 -
 Common.h
@@ -65,10 +51,10 @@ SparseMatrix.h
 C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/SparseMatrix.h
 stdlib.h
 -
-OptimizationMaximization.h
-C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/OptimizationMaximization.h
 stdlib.h
 -
+
+C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/SparseMatrix.h
 
 C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/vector.h
 

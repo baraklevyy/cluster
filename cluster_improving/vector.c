@@ -7,20 +7,18 @@
 void vec_normalize(double * v, int size)
 {
     double sum = 0.0;
-    double val;
-    int i;
-
-    for (i = 0; i < size; i++) {
-        val = *(v + i);
+    double val, *for_limit, *v_ptr;
+    for_limit = (v + size);
+    for(v_ptr = v; v_ptr < for_limit; v_ptr++){
+        val = *(v_ptr);
         sum += (val * val);
     }
-
     sum = sqrt(sum);
     if (!IS_POSITIVE(sum))
         return;
 
-    for (i = 0; i < size; i++)
-        *(v + i) /= sum;
+    for (v_ptr = v; v_ptr < for_limit; v_ptr++)
+        *(v_ptr) /= sum;
 }
 
 int diff_below_epsilon(double *v1, double *v2, int size) {
@@ -28,14 +26,8 @@ int diff_below_epsilon(double *v1, double *v2, int size) {
 
     for (i = 0; i < size; i++)
         if ( IS_POSITIVE(fabs(*(v1 + i) - *(v2 + i))) ){
-            /*
-            printf("%f", fabs(*(v1 + i) - *(v2 + i)));
-            fflush(stdout);
-             */
             return 0;
         }
-
-
     return 1;
 }
 

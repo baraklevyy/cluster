@@ -5,8 +5,8 @@ all: cluster
 clean:
 	rm -rf *.o cluster
 
-cluster: main.o SparseMatrix.o Utility.o Common.o ModularityGroupsDivision.o Algorithm2.o B.o ModularityMaximization.o modmax.o vector.o
-	gcc main.o SparseMatrix.o Utility.o Common.o ModularityGroupsDivision.o Algorithm2.o B.o ModularityMaximization.o modmax.o vector.o -o cluster $(LIBS)
+cluster: main.o SparseMatrix.o Utility.o Common.o ModularityGroupsDivision.o Algorithm2.o B.o ModularityMaximization.o vector.o
+	gcc main.o SparseMatrix.o Utility.o Common.o ModularityGroupsDivision.o Algorithm2.o B.o ModularityMaximization.o vector.o -o cluster $(LIBS)
 main.o:  main.c ModularityGroupsDivision.h SparseMatrix.h Common.h Utility.h
 	gcc $(FLAGS) -c main.c
 	
@@ -30,8 +30,6 @@ B.o: B.c B.h Common.h SparseMatrix.h vector.h
 
 ModularityMaximization.o: ModularityMaximization.c ModularityMaximization.h SparseMatrix.h
 	gcc $(FLAGS) -c ModularityMaximization.c
-modmax.o: modmax.c modmax.h SparseMatrix.h Common.h
-	gcc $(FLAGS) -c modmax.c
 
 vector.o: vector.c vector.h 
 	gcc $(FLAGS) -c vector.c

@@ -9,11 +9,9 @@ set(CMAKE_DEPENDS_CHECK_C
   "C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/Common.c" "C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/cmake-build-debug/CMakeFiles/cluster_improving.dir/Common.c.obj"
   "C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/ModularityGroupsDivision.c" "C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/cmake-build-debug/CMakeFiles/cluster_improving.dir/ModularityGroupsDivision.c.obj"
   "C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/ModularityMaximization.c" "C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/cmake-build-debug/CMakeFiles/cluster_improving.dir/ModularityMaximization.c.obj"
-  "C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/OptimizationMaximization.c" "C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/cmake-build-debug/CMakeFiles/cluster_improving.dir/OptimizationMaximization.c.obj"
   "C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/SparseMatrix.c" "C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/cmake-build-debug/CMakeFiles/cluster_improving.dir/SparseMatrix.c.obj"
   "C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/Utility.c" "C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/cmake-build-debug/CMakeFiles/cluster_improving.dir/Utility.c.obj"
   "C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/main.c" "C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/cmake-build-debug/CMakeFiles/cluster_improving.dir/main.c.obj"
-  "C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/modmax.c" "C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/cmake-build-debug/CMakeFiles/cluster_improving.dir/modmax.c.obj"
   "C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/vector.c" "C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/cmake-build-debug/CMakeFiles/cluster_improving.dir/vector.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "GNU")

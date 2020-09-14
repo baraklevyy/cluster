@@ -33,13 +33,11 @@ node* add_to_list(int col, node *elem) {
         exit(status);
     }
     new_node->col = col;
-    new_node->original = col;
     new_node->next = NULL;
     if (elem == NULL) {
         return new_node;
     }
     elem->next = new_node;
-
     status = SUCCESS_STATUS_CODE;
     return new_node;
 }
@@ -50,7 +48,6 @@ void add_row_list(struct _spmat *A, const int *row, int size, int i) {
     node *cell;
     node** rows = A->private;
     cell = rows[i];
-    column_number = 0;
     /*	iterating over row*/
     for (column_number = 0; column_number < size; ++column_number) {
         value = row[column_number];
@@ -64,29 +61,6 @@ void add_row_list(struct _spmat *A, const int *row, int size, int i) {
     }
 }
 
-
-/*
-void list_cleanup(struct _spmat *A) {
-    node** outer_array;
-    node* next_node, *current_node;
-    int n, i;
-    outer_array = A->private;
-    n = A->n;
-    i = 0;
-    for (i = 0; i < n; ++i) {
-        next_node = *(outer_array +i);
-        current_node = next_node;
-        while (current_node != NULL) {
-            next_node = next_node->next;
-            free(current_node);
-            current_node = next_node;
-        }
-    }
-
-    free(outer_array);
-
-}
-*/
 spmat* spmat_allocate_list(int n) {
     Status status = INVALID_STATUS_CODE;
     spmat *sp = NULL;

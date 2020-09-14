@@ -2,61 +2,60 @@
 #include "Common.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "SparseMatrix.h"
 
 void get_error_message(Status result) {
     char * message = NULL;
     switch (result) {
         case SUCCESS_STATUS_CODE:
-            message = "SUCCESS";
+            message = "\nSUCCESS";
             printf("%s", message);
             break;
         case MALLOC_FAILED_CODE:
-            message = "Memory-Allocation(malloc) FAILED";
+            message = "\nMemory-Allocation(malloc) FAILED";
             printf("%s", message);
             break;
         case NULL_ARGUMENT_CODE:
-            message = "NULL_ARGUMENT";
+            message = "\nNULL_ARGUMENT";
             printf("%s", message);
             break;
         case FOPEN_FAILED_CODE:
-            message = "FAILED TO OPEN FILE";
+            message = "\nFAILED TO OPEN FILE";
             printf("%s", message);
             break;
         case FREAD_FAILED_CODE:
-            message = "FAILED TO READ FILE";
+            message = "\nFAILED TO READ FILE";
             printf("%s", message);
             break;
         case FWRITE_FAILED_CODE:
-            message = "FAILED TO WRITE INTO FILE";
+            message = "\nFAILED TO WRITE INTO FILE";
             printf("%s", message);
             break;
         case INVALID_ARGUMENTS_CODE:
-            message = "INVALID ARGUMENTS";
+            message = "\nINVALID ARGUMENTS";
             printf("%s", message);
             break;
         case ZERO_DIVISION_CODE:
-            message = "DIVISION BY ZERO";
+            message = "\nDIVISION BY ZERO";
             printf("%s", message);
             break;
         case GROUP_NOT_DIVISIBLE_CODE:
-            message = "THE GROUP IS NOT DIVISIBLE";
+            message = "\nTHE GROUP IS NOT DIVISIBLE";
             printf("%s", message);
             break;
         case REACHED_MAX_NUMBER_OF_ITERATION:
-            message = "REACHED_MAX_NUMBER_OF_ITERATION";
+            message = "\nREACHED_MAX_NUMBER_OF_ITERATION";
             printf("%s", message);
             break;
         case NEGATIVE_EIGEN_VALUE:
-            message = "THE GROUP IS NOT PARTITIONALIZED - negative eigen value";
+            message = "\nTHE GROUP IS NOT PARTITIONALIZED";
             printf("%s", message);
             break;
         case ZERO_NUMBER_OF_EDGES:
-            message = "ZERO_NUMBER_OF_EDGES";
+            message = "\nZERO_NUMBER_OF_EDGES";
             printf("%s", message);
             break;
         default:
-            message = "UNKNOWN ERROR";
+            message = "\nUNKNOWN ERROR";
             printf("%s", message);
             break;
     }
@@ -164,13 +163,11 @@ pointers* initialized_pointer(allocations *alloc, spmat *A){
 }
 void outer_array_free(node** outer_array, int size) {
     node* next_node, *current_node;
-    int  i, num;
+    int  i;
     for (i = 0; i < size; ++i) {
         next_node = *(outer_array +i);
         current_node = next_node;
-        num = 0;
         while (current_node != NULL) {/*set currentNode to head, stop when empty*/
-            num += 1;
             next_node = next_node->next;
             free(current_node);
             current_node = next_node;
@@ -192,7 +189,6 @@ void free_allocations(pointers *main_pointer){
     free(main_pointer->output_array);
     free(main_pointer->A_relevant_indices);
     free(main_pointer->A_onces_num);
-    /*corner case to check: the input is one click so maybe the A will be freed already in the ModularityGroupDivision*/
     /*free(main_pointer->A);*/
     free(main_pointer->outer_array_helper);
     free(main_pointer->A_outer_array_helper);

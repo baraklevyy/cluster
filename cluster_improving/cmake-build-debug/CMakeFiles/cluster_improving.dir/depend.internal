@@ -24,19 +24,12 @@ CMakeFiles/cluster_improving.dir/ModularityGroupsDivision.c.obj
  C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/Common.h
  C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/ModularityGroupsDivision.c
  C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/ModularityMaximization.h
- C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/OptimizationMaximization.h
  C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/SparseMatrix.h
- C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/modmax.h
  C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/vector.h
 CMakeFiles/cluster_improving.dir/ModularityMaximization.c.obj
  C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/Common.h
  C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/ModularityMaximization.c
  C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/ModularityMaximization.h
- C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/SparseMatrix.h
-CMakeFiles/cluster_improving.dir/OptimizationMaximization.c.obj
- C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/Common.h
- C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/OptimizationMaximization.c
- C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/OptimizationMaximization.h
  C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/SparseMatrix.h
 CMakeFiles/cluster_improving.dir/SparseMatrix.c.obj
  C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/Common.h
@@ -55,13 +48,6 @@ CMakeFiles/cluster_improving.dir/main.c.obj
  C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/Utility.h
  C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/main.c
  C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/vector.h
-CMakeFiles/cluster_improving.dir/modmax.c.obj
- C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/Common.h
- C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/ModularityMaximization.h
- C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/OptimizationMaximization.h
- C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/SparseMatrix.h
- C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/modmax.c
- C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/modmax.h
 CMakeFiles/cluster_improving.dir/vector.c.obj
  C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/Common.h
  C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/SparseMatrix.h

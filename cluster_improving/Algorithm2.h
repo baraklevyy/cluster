@@ -7,6 +7,6 @@
 #include "SparseMatrix.h"
 #include "vector.h"
 
-Status algorithm2_modified(const struct _spmat *A, const int *k, int M, allocations *alloc, double l1_norm, int *number_of_1) ;
+Status algorithm2(const struct _spmat *A, const int *k, int M, allocations *alloc, double l1_norm) ;
 
 #endif /*CLUSTER_IMPROVING_ALGORITHM2_H*/

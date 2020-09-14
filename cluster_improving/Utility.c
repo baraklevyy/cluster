@@ -66,7 +66,7 @@ Status extract_matrix_size(int argc, char** argv, int *n) {
         get_error_message(status);
         exit(status);
     }
-    sanity_check = fread(n, sizeof(int), 1, input_file);    /*first values indicates the number of vertices*/
+    sanity_check = fread(n, sizeof(int), 1, input_file); /*first values indicates the number of vertices*/
     if (1 != sanity_check) {
         status = FREAD_FAILED_CODE;
         get_error_message(status);
@@ -77,55 +77,6 @@ Status extract_matrix_size(int argc, char** argv, int *n) {
     return status;
 }
 
-Status isolated_nodes_handling(int argc, char** argv, int *n, int *output_array, int *number_of_groups, int *number_of_written_elements) {
-    Status status = INVALID_STATUS_CODE;
-    int sanity_check, i;
-    int size, current_num_of_neighbors;
-    FILE* input_file;
-    if (argc != 2) {
-        status = INVALID_ARGUMENTS_CODE;
-        get_error_message(status);
-        exit(status);
-    }
-    input_file = fopen(*(argv + 1), "rb");
-
-    if (NULL == input_file) {
-        status = FOPEN_FAILED_CODE;
-        get_error_message(status);
-        exit(status);
-    }
-    sanity_check = fread(n, sizeof(int), 1, input_file);	/*first values indicates the number of vertices*/
-    if (1 != sanity_check) {
-        status = FREAD_FAILED_CODE;
-        get_error_message(status);
-        exit(status);
-    }
-    size = *(n); /* Total number of nodes including the isolated.*/
-    /*handling with isolated nodes*/
-    for(i = 0; i < size; i++){
-        sanity_check = fread(&current_num_of_neighbors, sizeof(int), 1, input_file);
-        if (1 != sanity_check) {
-            status = FREAD_FAILED_CODE;
-            get_error_message(status);
-            exit(status);
-        }
-        /*handling isolated nodes. They will move to their own group in the outer array */
-        if(current_num_of_neighbors == 0){
-            *(number_of_groups) += 1;
-            *(output_array + *(number_of_written_elements)) = i;
-            number_of_written_elements += 1;
-            *(n) -= 1;
-        }
-        else {
-            fseek(input_file , current_num_of_neighbors * sizeof(int), SEEK_CUR);
-        }
-    }
-    status = SUCCESS_STATUS_CODE;
-    fclose(input_file);
-    return status;
-
-
-}
 /*This function return a Status variable in order to indicate errors.
  * It is also loaded into A, k, M the corresponding values (load the actuall graph)
  * */

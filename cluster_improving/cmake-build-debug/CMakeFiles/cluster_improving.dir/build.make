@@ -193,32 +193,6 @@ CMakeFiles/cluster_improving.dir/ModularityMaximization.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/cluster_improving.dir/ModularityMaximization.c.s"
 	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\barak\CLionProjects\stop_balagan\cluster_improving\ModularityMaximization.c -o CMakeFiles\cluster_improving.dir\ModularityMaximization.c.s
 
-CMakeFiles/cluster_improving.dir/OptimizationMaximization.c.obj: CMakeFiles/cluster_improving.dir/flags.make
-CMakeFiles/cluster_improving.dir/OptimizationMaximization.c.obj: ../OptimizationMaximization.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\barak\CLionProjects\stop_balagan\cluster_improving\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/cluster_improving.dir/OptimizationMaximization.c.obj"
-	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\cluster_improving.dir\OptimizationMaximization.c.obj   -c C:\Users\barak\CLionProjects\stop_balagan\cluster_improving\OptimizationMaximization.c
-
-CMakeFiles/cluster_improving.dir/OptimizationMaximization.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/cluster_improving.dir/OptimizationMaximization.c.i"
-	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\barak\CLionProjects\stop_balagan\cluster_improving\OptimizationMaximization.c > CMakeFiles\cluster_improving.dir\OptimizationMaximization.c.i
-
-CMakeFiles/cluster_improving.dir/OptimizationMaximization.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/cluster_improving.dir/OptimizationMaximization.c.s"
-	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\barak\CLionProjects\stop_balagan\cluster_improving\OptimizationMaximization.c -o CMakeFiles\cluster_improving.dir\OptimizationMaximization.c.s
-
-CMakeFiles/cluster_improving.dir/modmax.c.obj: CMakeFiles/cluster_improving.dir/flags.make
-CMakeFiles/cluster_improving.dir/modmax.c.obj: ../modmax.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\barak\CLionProjects\stop_balagan\cluster_improving\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/cluster_improving.dir/modmax.c.obj"
-	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\cluster_improving.dir\modmax.c.obj   -c C:\Users\barak\CLionProjects\stop_balagan\cluster_improving\modmax.c
-
-CMakeFiles/cluster_improving.dir/modmax.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/cluster_improving.dir/modmax.c.i"
-	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\barak\CLionProjects\stop_balagan\cluster_improving\modmax.c > CMakeFiles\cluster_improving.dir\modmax.c.i
-
-CMakeFiles/cluster_improving.dir/modmax.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/cluster_improving.dir/modmax.c.s"
-	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\barak\CLionProjects\stop_balagan\cluster_improving\modmax.c -o CMakeFiles\cluster_improving.dir\modmax.c.s
-
 # Object files for target cluster_improving
 cluster_improving_OBJECTS = \
 "CMakeFiles/cluster_improving.dir/main.c.obj" \
@@ -229,9 +203,7 @@ cluster_improving_OBJECTS = \
 "CMakeFiles/cluster_improving.dir/Common.c.obj" \
 "CMakeFiles/cluster_improving.dir/ModularityGroupsDivision.c.obj" \
 "CMakeFiles/cluster_improving.dir/SparseMatrix.c.obj" \
-"CMakeFiles/cluster_improving.dir/ModularityMaximization.c.obj" \
-"CMakeFiles/cluster_improving.dir/OptimizationMaximization.c.obj" \
-"CMakeFiles/cluster_improving.dir/modmax.c.obj"
+"CMakeFiles/cluster_improving.dir/ModularityMaximization.c.obj"
 
 # External object files for target cluster_improving
 cluster_improving_EXTERNAL_OBJECTS =
@@ -245,13 +217,11 @@ cluster_improving.exe: CMakeFiles/cluster_improving.dir/Common.c.obj
 cluster_improving.exe: CMakeFiles/cluster_improving.dir/ModularityGroupsDivision.c.obj
 cluster_improving.exe: CMakeFiles/cluster_improving.dir/SparseMatrix.c.obj
 cluster_improving.exe: CMakeFiles/cluster_improving.dir/ModularityMaximization.c.obj
-cluster_improving.exe: CMakeFiles/cluster_improving.dir/OptimizationMaximization.c.obj
-cluster_improving.exe: CMakeFiles/cluster_improving.dir/modmax.c.obj
 cluster_improving.exe: CMakeFiles/cluster_improving.dir/build.make
 cluster_improving.exe: CMakeFiles/cluster_improving.dir/linklibs.rsp
 cluster_improving.exe: CMakeFiles/cluster_improving.dir/objects1.rsp
 cluster_improving.exe: CMakeFiles/cluster_improving.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\barak\CLionProjects\stop_balagan\cluster_improving\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking C executable cluster_improving.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\barak\CLionProjects\stop_balagan\cluster_improving\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking C executable cluster_improving.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\cluster_improving.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

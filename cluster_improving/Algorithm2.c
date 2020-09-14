@@ -1,35 +1,29 @@
 #include <stdlib.h>
 #include "Algorithm2.h"
 
-Status algorithm2_modified(const struct _spmat *A, const int *k, int M, allocations *alloc, double l1_norm, int *number_of_1) {
+Status algorithm2(const struct _spmat *A, const int *k, int M, allocations *alloc, double l1_norm) {
     Status status;
-    double eig_val;
-    int i, n;
+    double eig_val, *s_ptr, *for_limit;
+    int n;
     status = INVALID_STATUS_CODE;
-    *(number_of_1) = 0;
     n = A->n;
+    for_limit = (alloc->s + n);
     /*get eigen_vector*/
     power_iteration_modified(A, k, M, alloc, l1_norm);
     /* get corresponding eigenvalue */
 
     power_iteration_eigval_modified(A, k, M, alloc, l1_norm, &eig_val);
-    /*
-    printf("eigen value is %f\n", eig_val);
-    fflush(stdout);
 
-     */
     if (!IS_POSITIVE(eig_val)) {
         status = NEGATIVE_EIGEN_VALUE;
         goto l_cleanup;
     }
 
-    for (i = 0; i < n; i++) {
-        if (IS_POSITIVE(*(alloc->s + i))){
-            *(alloc->s + i) = 1.0;
-            *(number_of_1) += 1;
-        }
+    for(s_ptr = alloc->s; s_ptr < for_limit; s_ptr++){
+        if (IS_POSITIVE(*(s_ptr)))
+            *(s_ptr) = 1.0;
         else
-            *(alloc->s + i) = -1.0;
+            *(s_ptr) = -1.0;
     }
 
     /* we now use random_normalized_vector to store the result of B_gag[g] * s */
@@ -39,17 +33,12 @@ Status algorithm2_modified(const struct _spmat *A, const int *k, int M, allocati
         status = GROUP_NOT_DIVISIBLE_CODE;
         goto l_cleanup;
     }
-    /*
-    for(i=0;i<n;i++) {
-        printf("s[%d] = %f \n", i, *(alloc->s + i));
-        fflush(stdout);
-    }
-     */
+
     status = SUCCESS_STATUS_CODE;
     return status;
 
     l_cleanup:
-    for (i = 0; i < n; i++) *(alloc->s + i) = 1.0;
+    for(s_ptr = alloc->s; s_ptr < for_limit; s_ptr++) *(s_ptr) = 1.0;
     return status;
 }
 

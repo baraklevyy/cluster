@@ -3,8 +3,6 @@
 #include "B.h"
 #include "Algorithm2.h"
 #include "ModularityMaximization.h"
-#include "OptimizationMaximization.h"
-#include "modmax.h"
 
 
 void modularity_division_rec(struct _spmat *A, int *k, struct _allocations *alloc, int M, double L1_NORM, int number_of_1,
@@ -12,55 +10,22 @@ void modularity_division_rec(struct _spmat *A, int *k, struct _allocations *allo
     Status status;
     spmat *A1, *A2;
     int i, n;
+    double reuse_sum;
     status = INVALID_STATUS_CODE;
     n = A->n;
-/*
-    int v_elem_num, index;
-    node *nnpointer, **nnouterarry ;
-printf("\n#################################");
-    nnouterarry = A->private;
-    for (i = 0; i < A->n; ++i) {
-        nnpointer = ((node*)A->private + i);
-        nnpointer = nnouterarry[i];
-        v_elem_num = *(A->onces_num + i);
-        index = 0;
-        printf("\n%s ","|->");
-        fflush(stdout);
-        for (index= 0; index < v_elem_num; index++) {
-            printf("%d ->",nnpointer->col);
-            fflush(stdout);
-            nnpointer = nnpointer->next;
-        }
-    }
-    printf("\n#################################\n");
-*/
+
     /* f has to be changes from step to another*/
-    f_array(A, k, M, alloc->f);
+    f_array(A, k, M, alloc->f, &reuse_sum);
     /*we have to calculate L1_NORM just on the first iteration, L1_NORM set to -1.0 in main just for the first time*/
     /*L1_NORM = L1_NORM == -1.0 ? L1_norm(A, k, M, alloc->f) : L1_NORM ;*/
-    L1_NORM =L1_norm(A, k, M, alloc->f);
-
-
-    status = algorithm2_modified(A, k, M, alloc, L1_NORM, &number_of_1);
-
-   /* modularity_max_modified(A, k, M, alloc->s, alloc->rows_helper, alloc->onces_helper, &number_of_1);*/
-    /*modularity_max(A, k, M, alloc->s, alloc->rows_helper, alloc->onces_helper, &number_of_1);*/
-    modularity_max1(A, k, M, alloc->s, alloc->rows_helper, alloc->onces_helper, &number_of_1);
-  /*  printf("\n#################################");
-    for(i=0;i<n;i++){
-        printf("\ns[%d]=%f",i,*(alloc->s + i));
-        fflush(stdout);
+    L1_NORM =L1_norm(A, k, M, alloc->f, reuse_sum);
+    /*matrix with a single element doesnt have to enter clustering Algorithms*/
+    if(n != 1){
+        status = algorithm2(A, k, M, alloc, L1_NORM);
+        modularity_max1(A, k, M, alloc->s, alloc->rows_helper, alloc->onces_helper, &number_of_1);
     }
-    printf("\n#################################\n");*/
-    /*temporary number_of_1 counting*/
-    /*no isolated nodes*/
-    /*
-    for(i=0;i<n;i++){
-        printf("\nk[%d]=%d",i,*(k + i));
-        fflush(stdout);
-    }
-     */
 
+    /*inserting relevant group into the output array*/
     if(n == number_of_1 || number_of_1 == 0 || n == 1){
         *(number_of_groups) += 1;
         /*inset group size first*/
@@ -70,11 +35,10 @@ printf("\n#################################");
             *(alloc->output_array + *(number_of_written_elements)) = *(A->relevant_indices + i);
             *(number_of_written_elements) += 1;
         }
-        outer_array_free(A->private, A->n);
-        /*free(A);*/
+        outer_array_free(A->private, n);
     }
+    /*enter to recursion*/
     else {
-
         A1 = (spmat *) malloc(sizeof(spmat));
         if (NULL == A1) {
             status = MALLOC_FAILED_CODE;
@@ -87,74 +51,11 @@ printf("\n#################################");
             get_error_message(status);
             exit(status);
         }
-        /*split_mat_modified(A,A1,A2,alloc,number_of_1);*/
-
-
-/*
-
-        printf("\n#################################");
-        for(i=0;i<A->n;i++){
-            printf("\nA1.onces_num[%d]=%d",i,*(A->onces_num + i));
-            fflush(stdout);
-        }
-        printf("\n#################################\n");
-
-*/
-        split_mat(A, A1, A2, &k, alloc->s, number_of_1, &(alloc->rows_helper), &(alloc->onces_helper), &(alloc->outer_array_helper),
-                  &(alloc->relevant_indices_helper));
-/*
-
-        nnouterarry = A->private;
-        for (i = 0; i < A->n; ++i) {
-            nnpointer = ((node*)A->private + i);
-            nnpointer = nnouterarry[i];
-            v_elem_num = *(A->onces_num + i);
-            index = 0;
-            printf("\n%s ","|->");
-            fflush(stdout);
-            for (index= 0; index < v_elem_num; index++) {
-                printf("%d ->",nnpointer->col);
-                fflush(stdout);
-                nnpointer = nnpointer->next;
-            }
-        }
-
-
-
-        printf("\n#################################");
-        for(i=0;i<A1->n;i++){
-            printf("\nA1.onces_num[%d]=%d",i,*(A1->onces_num + i));
-            fflush(stdout);
-        }
-        printf("\n#################################\n");
-        printf("\n#################################");
-        for(i=0;i<A2->n;i++){
-            printf("\nA2.onces_num[%d]=%d",i,*(A2->onces_num + i));
-            fflush(stdout);
-        }
-        printf("\n#################################\n");
-
-
-        for(i=0;i<n;i++){
-            printf("\nk[%d]=%d",i,*(k + i));
-            fflush(stdout);
-        }
-
-        for(i=0;i<A1->n;i++){
-            printf("A1.relevant[%d] = %d \n", i, *(A1->relevant_indices + i));
-            fflush(stdout);
-        }
-
-
-        for(i=0;i<A2->n;i++){
-            printf("A1.relevant[%d] = %d \n", i, *(A2->relevant_indices + i));
-            fflush(stdout);
-        }
-
-*/
+        /*splitting into two sparse matrices with corresponding elements*/
+        split_mat(A, A1, A2, k, alloc->s, number_of_1, alloc->rows_helper, alloc->onces_helper, alloc->outer_array_helper,alloc->relevant_indices_helper);
+        /*recursion calls*/
         modularity_division_rec(A1, k, alloc, M, L1_NORM, number_of_1, number_of_groups, number_of_written_elements);
         modularity_division_rec(A2, k + number_of_1 , alloc, M, L1_NORM, number_of_1, number_of_groups, number_of_written_elements);
-        /*free(A);*/
     }
     free(A);
 }
