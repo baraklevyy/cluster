@@ -39,14 +39,11 @@ CMakeFiles/cluster_improving.dir/Utility.c.obj: ../Common.h
 CMakeFiles/cluster_improving.dir/Utility.c.obj: ../SparseMatrix.h
 CMakeFiles/cluster_improving.dir/Utility.c.obj: ../Utility.c
 
-CMakeFiles/cluster_improving.dir/main.c.obj: ../Algorithm2.h
-CMakeFiles/cluster_improving.dir/main.c.obj: ../B.h
 CMakeFiles/cluster_improving.dir/main.c.obj: ../Common.h
 CMakeFiles/cluster_improving.dir/main.c.obj: ../ModularityGroupsDivision.h
 CMakeFiles/cluster_improving.dir/main.c.obj: ../SparseMatrix.h
 CMakeFiles/cluster_improving.dir/main.c.obj: ../Utility.h
 CMakeFiles/cluster_improving.dir/main.c.obj: ../main.c
-CMakeFiles/cluster_improving.dir/main.c.obj: ../vector.h
 
 CMakeFiles/cluster_improving.dir/vector.c.obj: ../Common.h
 CMakeFiles/cluster_improving.dir/vector.c.obj: ../SparseMatrix.h

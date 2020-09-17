@@ -3,20 +3,16 @@
 #include <memory.h>
 #include <float.h>
 
-void modularity_max1(const struct _spmat *A, const int *k, int M, double *s, int *moved, int *indices, int *number_of_1) {
-    int i, j, number_of_one;
-    double delta_q, sj, s_max_index, *s_ptr;
-    double current_improve, max_improve, previous_improve;
-    int n = A->n;
-    int index_of_max_score, index_of_max_improve;
-    double original_reuse_sum;
-    double current_score, max_score, reuse_sum;
-
+void modularity_max(const struct _spmat *A, const int *k, int M, double *s, int *moved, int *indices, int *number_of_1, double reuse_sum) {
+    int n, i, j, number_of_one, index_of_max_score, index_of_max_improve;
+    double delta_q, sj, s_max_index, *s_ptr, current_improve, max_improve, previous_improve;
+    double original_reuse_sum, current_score, max_score;
+    n = A->n;
+    /*calculating reuse_sum*/
     reuse_sum = 0.0;
     for (i = 0; i < n; i++) {
         reuse_sum += *(k + i) * (*(s + i));
     }
-
     do {
         /* set to zero relevant elements of moved */
         memset(moved, 0, n * sizeof(int));
@@ -30,13 +26,12 @@ void modularity_max1(const struct _spmat *A, const int *k, int M, double *s, int
                     *(s + j) = -sj;
                     original_reuse_sum = reuse_sum;
                     reuse_sum += (2 * ((double)(*(k + j)) * (-sj)));
-                    current_score = compute_score1(A, k, M, s, j, reuse_sum);
+                    current_score = compute_score(A, k, M, s, j, reuse_sum);
                     *(s + j) = sj;
                     reuse_sum = original_reuse_sum;
                     /*reuse_sum = original_reuse_sum;*/
                     index_of_max_score = max_score < current_score ? j : index_of_max_score;
                     max_score = max_score < current_score ? current_score : max_score;
-
                 }
             }
             s_max_index = *(s + index_of_max_score);
@@ -54,7 +49,6 @@ void modularity_max1(const struct _spmat *A, const int *k, int M, double *s, int
             previous_improve = current_improve;
             *(moved + index_of_max_score) = 1;
         }
-
         for (i = n - 1; i > index_of_max_improve; i--) {
             j = *(indices + i);
             sj = *(s + j);
@@ -76,18 +70,14 @@ void modularity_max1(const struct _spmat *A, const int *k, int M, double *s, int
     return;
 }
 
-
-
-double compute_score1(const struct _spmat *A, const int *k, int M, double *s, int row_number, double reuse_sum){
-    node **rows;
-    node *current;
+double compute_score(const struct _spmat *A, const int *k, int M, double *s, int row_number, double reuse_sum){
+    node **rows, *current;
     double res, m;
     double A_sum = 0.0;
     double k_row_number = (double)(*(k + row_number));
     rows = A->private;
     m = (double)M;
     current = *(rows + row_number);
-
     while(current != NULL){
         A_sum += *(s + current->col);
         current = current->next;

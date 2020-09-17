@@ -4,26 +4,20 @@
 #include "SparseMatrix.h"
 #include "Common.h"
 #include "Utility.h"
-#include "B.h"
-#include "Algorithm2.h"
 #include"ModularityGroupsDivision.h"
 
 int main(int argc, char *argv[]) {
-    clock_t	start, end;
-    Status status;
     int number_of_1 , M, n, sanity_check,number_of_groups, number_of_written_elements;
+    Status status;
+    clock_t	start, end;
     pointers *main_pointer;
     spmat *A;
     FILE *write_ptr;
     allocations *alloc;
 /* start measuring time */
     start = clock();
-
-    /*seed random*/
-    srand((unsigned int) time(0));
-
     status = INVALID_STATUS_CODE;
-    number_of_written_elements = 1; /*allocating the first slot for the number of groups*/
+    number_of_written_elements = 1; /*reserving the first slot for the total number of groups*/
     number_of_groups = 0;
     number_of_1 = 0;
     status = extract_matrix_size(argc, argv, &n);
@@ -36,7 +30,6 @@ int main(int argc, char *argv[]) {
         get_error_message(status);
         exit(status);
     }
-
     modularity_division_rec(A, alloc->k, alloc, M, -1.0, number_of_1, &number_of_groups, &number_of_written_elements);
     /*writing the output file*/
     *(alloc->output_array) = number_of_groups;
@@ -47,7 +40,6 @@ int main(int argc, char *argv[]) {
         get_error_message(status);
         exit(status);
     }
-
     /*finishing execution*/
     fclose(write_ptr);
     free_allocations(main_pointer);

@@ -7,24 +7,22 @@
 
 void modularity_division_rec(struct _spmat *A, int *k, struct _allocations *alloc, int M, double L1_NORM, int number_of_1,
                              int *number_of_groups, int *number_of_written_elements){
-    Status status;
-    spmat *A1, *A2;
     int i, n;
     double reuse_sum;
+    Status status;
+    spmat *A1, *A2;
     status = INVALID_STATUS_CODE;
     n = A->n;
-
-    /* f has to be changes from step to another*/
+    /*modifing f to the current matrix */
     f_array(A, k, M, alloc->f, &reuse_sum);
-    /*we have to calculate L1_NORM just on the first iteration, L1_NORM set to -1.0 in main just for the first time*/
+    /* if we want to calculate L1_NORM just on the first iteration, L1_NORM set to -1.0 in main*/
     /*L1_NORM = L1_NORM == -1.0 ? L1_norm(A, k, M, alloc->f) : L1_NORM ;*/
     L1_NORM =L1_norm(A, k, M, alloc->f, reuse_sum);
     /*matrix with a single element doesnt have to enter clustering Algorithms*/
     if(n != 1){
         status = algorithm2(A, k, M, alloc, L1_NORM);
-        modularity_max1(A, k, M, alloc->s, alloc->rows_helper, alloc->onces_helper, &number_of_1);
+        modularity_max(A, k, M, alloc->s, alloc->rows_helper, alloc->onces_helper, &number_of_1, reuse_sum);
     }
-
     /*inserting relevant group into the output array*/
     if(n == number_of_1 || number_of_1 == 0 || n == 1){
         *(number_of_groups) += 1;
@@ -37,7 +35,7 @@ void modularity_division_rec(struct _spmat *A, int *k, struct _allocations *allo
         }
         outer_array_free(A->private, n);
     }
-    /*enter to recursion*/
+    /*recursion deepen*/
     else {
         A1 = (spmat *) malloc(sizeof(spmat));
         if (NULL == A1) {

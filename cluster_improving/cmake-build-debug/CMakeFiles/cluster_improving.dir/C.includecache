@@ -6,41 +6,21 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/Algorithm2.h
-Common.h
-C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/Common.h
-B.h
-C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/B.h
-SparseMatrix.h
-C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/SparseMatrix.h
-vector.h
-C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/vector.h
-
-C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/B.h
-stdio.h
--
-Common.h
-C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/Common.h
-SparseMatrix.h
-C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/SparseMatrix.h
-
 C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/Common.h
 float.h
 -
 SparseMatrix.h
 C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/SparseMatrix.h
 
-C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/ModularityGroupsDivision.c
-stdio.h
--
-stdlib.h
--
-B.h
-C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/B.h
-Algorithm2.h
-C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/Algorithm2.h
+C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/ModularityMaximization.c
 ModularityMaximization.h
 C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/ModularityMaximization.h
+stdio.h
+-
+memory.h
+-
+float.h
+-
 
 C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/ModularityMaximization.h
 stdio.h
@@ -55,6 +35,4 @@ stdlib.h
 -
 
 C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/SparseMatrix.h
-
-C:/Users/barak/CLionProjects/stop_balagan/cluster_improving/vector.h
 

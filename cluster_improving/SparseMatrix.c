@@ -20,9 +20,7 @@ void list_multiplay(const struct _spmat *A, const double *v, double *result) {
         }
         *(result + current_row) += sum_so_far;
     }
-
 }
-
 /*add element to list after the specific element(elem) with column (col)*/
 node* add_to_list(int col, node *elem) {
     Status status = INVALID_STATUS_CODE;
@@ -41,14 +39,12 @@ node* add_to_list(int col, node *elem) {
     status = SUCCESS_STATUS_CODE;
     return new_node;
 }
-
 void add_row_list(struct _spmat *A, const int *row, int size, int i) {
-    int column_number;
-    int value;
+    int column_number, value;
     node *cell;
     node** rows = A->private;
     cell = rows[i];
-    /*	iterating over row*/
+    /*iterating over row*/
     for (column_number = 0; column_number < size; ++column_number) {
         value = row[column_number];
         if (cell == NULL) {/*initialize the first element of the outerArray*/
@@ -60,12 +56,11 @@ void add_row_list(struct _spmat *A, const int *row, int size, int i) {
         }
     }
 }
-
 spmat* spmat_allocate_list(int n) {
+    int i, *onces, *relevant_indices;
     Status status = INVALID_STATUS_CODE;
     spmat *sp = NULL;
     node **rows = NULL;
-    int i, *onces, *relevant_indices;
     sp = (spmat *) malloc(sizeof(spmat));
     if (NULL == sp) {
         status = MALLOC_FAILED_CODE;
@@ -91,7 +86,7 @@ spmat* spmat_allocate_list(int n) {
         get_error_message(status);
         exit(status);
     }
-    /* initialized relevant indices 0 - (n-1) */
+    /* initialized relevant indices 0 - (n-1)*/
     for(i = 0; i < n; i++)
         *(relevant_indices + i) = i;
     /*Initiazling variables*/
@@ -101,5 +96,4 @@ spmat* spmat_allocate_list(int n) {
     sp->relevant_indices = relevant_indices;
     status = SUCCESS_STATUS_CODE;
     return sp;
-
 }

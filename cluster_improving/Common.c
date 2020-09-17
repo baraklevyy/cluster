@@ -1,4 +1,3 @@
-
 #include "Common.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -115,7 +114,7 @@ allocations* alloc_allocations(int n) {
         exit(status);
     }
     relevant_indices_helper = (int*)malloc(sizeof(int) * n);
-    if (NULL == rows_helper) {
+    if (NULL == relevant_indices_helper) {
         status = MALLOC_FAILED_CODE;
         get_error_message(status);
         exit(status);
@@ -162,8 +161,8 @@ pointers* initialized_pointer(allocations *alloc, spmat *A){
 
 }
 void outer_array_free(node** outer_array, int size) {
-    node* next_node, *current_node;
     int  i;
+    node *next_node, *current_node;
     for (i = 0; i < size; ++i) {
         next_node = *(outer_array +i);
         current_node = next_node;
@@ -176,8 +175,6 @@ void outer_array_free(node** outer_array, int size) {
     }
 
 }
-
-
 void free_allocations(pointers *main_pointer){
     free(main_pointer->random_normalized_vector);
     free(main_pointer->f);
@@ -189,7 +186,6 @@ void free_allocations(pointers *main_pointer){
     free(main_pointer->output_array);
     free(main_pointer->A_relevant_indices);
     free(main_pointer->A_onces_num);
-    /*free(main_pointer->A);*/
     free(main_pointer->outer_array_helper);
     free(main_pointer->A_outer_array_helper);
     free(main_pointer);
