@@ -5,6 +5,7 @@
 #include "vector.h"
 void vec_normalize(double * v, int size){
     double val, *for_limit, *v_ptr, sum;
+    Status status = INVALID_STATUS_CODE;
     for_limit = (v + size);
     sum = 0.0;
     for(v_ptr = v; v_ptr < for_limit; v_ptr++){
@@ -12,8 +13,11 @@ void vec_normalize(double * v, int size){
         sum += (val * val);
     }
     sum = sqrt(sum);
-    if (!IS_POSITIVE(sum))
-        return;
+    if (!IS_POSITIVE(sum)){
+        status = ZERO_DIVISION_CODE;
+        get_error_message(status);
+        exit(status);
+    }
     for (v_ptr = v; v_ptr < for_limit; v_ptr++)
         *(v_ptr) /= sum;
 }

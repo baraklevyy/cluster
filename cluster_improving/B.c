@@ -76,11 +76,12 @@ double L1_norm(const struct _spmat *A, const int *k, int M, double *f, double re
 
 void power_iteration(const struct _spmat *A, const int *k, int M, allocations *alloc, double L1norm) {
     Status status = INVALID_STATUS_CODE;
-    int i, num, n;
+    int i, num, n, limit;
     n = A->n;
     num = 0;
+    limit = 2000 * n + 500000;
     generate_random_normalized_vector(alloc->random_normalized_vector, n);
-    while (num <= 300000) {/*setting this number as infinite loop detection*/
+    while (num <= limit) {/*setting this number as infinite loop detection*/
         num += 1;
         b_mult(A, k, M, alloc->random_normalized_vector, alloc->s, alloc->f, L1norm);
         vec_normalize(alloc->s, n);
@@ -102,7 +103,7 @@ void power_iteration(const struct _spmat *A, const int *k, int M, allocations *a
         for (i = 0; i < n; i++)
             *(alloc->random_normalized_vector + i) = *(alloc->s + i);
     }
-    if(num >= 300000){
+    if(num >= limit){
         status = REACHED_MAX_NUMBER_OF_ITERATION;
         get_error_message(status);
         exit(status);
